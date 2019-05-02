@@ -70,8 +70,40 @@ function akurasiK(dataLength, results){
 	}
 }
 
+function getresp(distance){
+	const kategori ={
+		0 : 0,
+		1 : 0,
+		2 : 0
+		};		
+		for (let i = 0; i < distance.length; i++) {
+			const resp = distance[i].kategori;
+			if (resp == "Good") {
+				kategori[0] += 1;
+			} else if (resp == "Bad") {
+				kategori[1] +=1;
+			}else{
+				kategori[2] +=1;
+			}
+		}
+		console.log(kategori[0]);
+		console.log("============");
+		console.log(kategori[1]);
+		console.log("============");
+		console.log(kategori[2]);
+	}
+
+function getNeighbor(distance, test, train, k){
+	const distance = [];
+	const jarak = getEuDistance(distance);
+	distance.push(jarak);
+	for (let i = 0; i < array.length; i++) {
+		
+	}
+}
+
 connection.query('SELECT * FROM contohlah', (err,rows)=>{
 	var train = rows;
 	var Euclidian = getEuDistance(train, testSet, train.length, testSet.length);
-	console.log(Euclidian);
+	var response = getresp(Euclidian);
 });
