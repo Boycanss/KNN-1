@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>COBA COBA KNN</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<!-- my CSS -->
+	<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+	<div class="container">
+		<ul class="nav nav-tabs">
+			<li class="active"><a data-toggle="tab" href="#player">DAFTAR PEMAIN</a></li>
+			<li><a data-toggle="tab" href="#inputplayer">INPUT DATA PEMAIN</a></li>
+			<li><a data-toggle="tab" href="#newplayer">PEMAIN BARU</a></li>
+		</ul>
+
+
+		<div class="tab-content">
+			<div class="tab-pane fade in active" id="player">
+				<br>
+				<h1 style="border-bottom: solid">PLAYERS</h1>
+					<table class="table table-bordered table-hover">
+						<thead>
+							<tr>
+								<td>NO.</td>
+								<td>ID</td>
+								<td>NAME</td>
+								<td>BALLSKILL</td>
+								<td>MENTAL</td>
+								<td>PASSING</td>
+								<td>PHYSICAL</td>
+								<td>SHOOTING</td>
+								<td>DEFENCE</td>
+								<td>CLASS</td>
+								<td>ACTION</td>
+
+
+							</tr>
+						</thead>
+						<tbody>
+							<% if (data) { %>
+							<% for(var i = 0; i < data.length; i++) { %>
+							<tr>
+								<td><%= (i + 1) %></td>
+								<td><%= data[i].id %></td>
+								<td><%= data[i].name %></td>
+								<td><%= data[i].ballskill %></td>
+								<td><%= data[i].mental %></td>
+								<td><%= data[i].passing %></td>
+								<td><%= data[i].physical %></td>
+								<td><%= data[i].shooting %></td>
+								<td><%= data[i].defence %></td>
+								<td><%= data[i].kelas %></td>
+								<td>
+									<a class="btn btn-primary" href="#!" data-target="activity">EDIT</a>
+
+									<a class="btn btn-danger" href="/editplayer/<%= data[i].id %>">DELETE</a>
+								</td>
+							</tr>
+							<% } %>
+							<% } %>
+						</tbody>
+					</table>
+	
+			</div>
+
+
+			<div class="tab-pane fade" id="inputplayer">
+				<br>
+				<h1 style="border-bottom: solid">INPUT PLAYER DATA</h1>
+					<form class="container" action="/submitplayer" method="POST">
+
+						<label>NAME</label>
+						<input id="inputan" type="text" name="name" required><br><br>
+				
+						<label>BALLSKILL</label>
+						<input id="inputan" type="number" name="ballskill" min="0" max="100" required>
+					
+						<label>MENTAL</label>
+						<input id="inputan" type="number" name="mental" min="0" max="100" required>
+						
+						<label>PASSING</label>
+						<input id="inputan" type="number" name="passing" min="0" max="100" required>
+						
+						<label>PHYSICAL</label>
+						<input id="inputan" type="number" name="physical" min="0" max="100" required>
+					
+						<label>SHOOTING</label>
+						<input id="inputan" type="number" name="shooting" min="0" max="100" required>
+						
+						<label>DEFENCE</label>
+						<input id="inputan" type="number" name="defence" min="0" max="100" required>
+						
+						<label>CLASS</label>
+						<select id="inputan" name="kelas">
+							<option label="KIPER">KIPER</option>
+							<option label="BEK">BEK</option>
+							<option label="PEMAIN TENGAH">PEMAIN TENGAH</option>
+							<option label="PENYERANG">PENYERANG</option>
+						</select><br><br>
+						<button type="submit" class="btn btn-primary">Submit</button><br><br>
+					</form>			
+			</div>
+
+			<div class="tab-pane fade" id="newplayer">
+				<br>
+				<h1 style="border-bottom: solid">INPUT NEW PLAYER DATA</h1>
+					<form class="container" action="/try" method="POST">
+
+						<label>NAME</label>
+						<input id="inputan" type="text" name="name" required><br><br>
+				
+						<label>BALLSKILL</label>
+						<input id="inputan" type="number" name="ballskill" min="0" max="100" required>
+					
+						<label>MENTAL</label>
+						<input id="inputan" type="number" name="mental" min="0" max="100" required>
+						
+						<label>PASSING</label>
+						<input id="inputan" type="number" name="passing" min="0" max="100" required>
+						
+						<label>PHYSICAL</label>
+						<input id="inputan" type="number" name="physical" min="0" max="100" required>
+					
+						<label>SHOOTING</label>
+						<input id="inputan" type="number" name="shooting" min="0" max="100" required>
+						
+						<label>DEFENCE</label>
+						<input id="inputan" type="number" name="defence" min="0" max="100" required> <br><br>
+						<button type="submit" class="btn btn-primary">Submit</button><br><br>
+					</form>
+
+			
+			</div>
+
+		</div>
+	</div>
+</body>
+</html>

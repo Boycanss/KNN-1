@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>coba dulu</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<!-- my CSS -->
+	<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+	<div class="tab-content">
+			<div class="tab-pane fade in active" id="player">
+				<br>
+				<h1 style="border-bottom: solid">PLAYERS</h1>
+					<table class="table table-bordered table-hover">
+						<thead>
+							<tr>
+
+								<td>X</td>
+								<td>Y</td>
+								<td>Klas</td>
+							
+							</tr>
+						</thead>
+						<tbody>
+							<% if (data) { %>
+							<% for(var i = 0; i < data.length; i++) { %>
+							<tr>
+								<td><%= data[i].x %></td>
+								<td><%= data[i].y %></td>
+								<td><%= data[i].klas %></td>
+							</tr>
+							<% } %>
+							<% } %>
+						</tbody>
+					</table>
+	
+			</div>
+			<a href="/trybro" class="btn btn-primary">GG</a>
+</body>
+</html>
