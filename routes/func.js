@@ -14,96 +14,151 @@ const path = require('path');
 const csrf = require('csurf');
 const notifier = require('node-notifier');
 var arraySort = require('array-sort');
-//_________________________________________
 
-var connection = mysql.createConnection({
-	host     : 'localhost',
-	user     : 'root',
-	password : '',
-	database : 'contohknn'
-});
+//connecting db__________________________________________________________________
 
-connection.connect(function(err){
-	if(!err) {
-		console.log("Go on! db is connected");
-	} else {
-		console.log("Can't get through! db isn't there");
-	}
-});
-
-
-
-var testSet = [3,5];
-
-function getEuDistance(trainSet, testSet, trainLength, testLength){
-	var dist = [];
-	var truedist = [];
-	console.log(trainSet);
-	console.log("testSet : "+testSet);
-	for (var i = 0; i < trainSet.length; i++) {
-	for (var j = 0; j < testSet.length; j++) {
-		var distance = (trainSet[i].x-testSet[j])**2 + (trainSet[i].y-testSet[j+1])**2;
-		dist.push(distance);		
-	}}
-	for (var z=0 ; z < dist.length; z++) {
-			if (z%2==0) {
-				truedist.push(Math.sqrt(dist[z]));
-			}
-			
+	var connection = mysql.createConnection({
+		host     : 'localhost',
+		user     : 'root',
+		password : '',
+		database : 'knn'
+	});
+	connection.connect(function(err){
+		if(!err) {
+			console.log("Go on! db is connected");
+		} else {
+			console.log("Can't get through! db isn't there");
 		}
-	var SortedDistance = sortDistance(truedist, trainSet);
-	return SortedDistance;
+	});
+//________________________________________________________________
+
+// function TrainingData(rows){
+// 	var pemain = [];
+// 	var contents = [];
+// 	var player = [];
+// 	rows.forEach(function(elem) {
+// 		contents.push(_.toArray(elem));
+// 	});
+// 	for (var i = 0; i < rows.length; i++) {
+// 		for (var j = 2; j <= 7; j++) {
+// 			var someValue = contents[i][j];
+// 			pemain.push(someValue);				
+// 		}
+// 	}
+// 	var i,j,temparray,chunk = 6;
+// 	for (i=0,j=pemain.length; i<j; i+=chunk) {
+// 		temparray = pemain.slice(i,i+chunk);
+// 		// console.log(temparray);
+// 		player.push(temparray);
+// 	}
+// 	return player;
+// }
+
+function getEuDistance(trainSet, testSet){
+	var dist = [];
+	console.log("______________________________________");
+	for (var b = 0; b < trainSet.length; b++) {
+		for (var o = 0; o < testSet.length; o++) {
+			var distance = 0;
+			for (var y = 1; y <= 6; y++) {
+				distance += (testSet[o][`ability${y}`]-trainSet[b][`ability${y}`])**2;
+				// console.log(">>> : ("+testplr[o][`ability${y}`]+"-"+player[b][`ability${y}`]+")**2 = "+(testplr[o][`ability${y}`]-player[b][`ability${y}`])**2)
+			}
+			dist.push(Math.sqrt(distance));
+		}
+	}
+	var sort = sortDistance(dist, trainSet);
+	return sort;
 }
 
 function sortDistance(Euclidian, train){
 	var dataq = [];
 	for (var i = 0; i < Euclidian.length; i++) {
-		dataq.push({Distance: Euclidian[i],kategori: train[i].klas})
+		dataq.push({Distance: Euclidian[i], posisi: train[i].kelas})
 	}
 	var sorted = arraySort(dataq, 'Distance');
 	return sorted;
 }
 
 
-function akurasiK(dataLength, results){
-	for (var k = 1; k < datalength; k++) {	
+function akurasiK(TestSet, predict){
+	var benar =0;
+	for (var k = 0; k < TestSet.length; k++) {	
+		if (TestSet[k].kelas === predict) {
+			benar += 1;
+		}
 	}
+	return (benar / TestSet.length) * 100.0;
 }
 
 function getresp(distance){
-	const kategori ={
+	var posisi ={
 		0 : 0,
 		1 : 0,
 		2 : 0
 		};		
 		for (let i = 0; i < distance.length; i++) {
-			const resp = distance[i].kategori;
-			if (resp == "Good") {
-				kategori[0] += 1;
-			} else if (resp == "Bad") {
-				kategori[1] +=1;
+			var resp = distance[i].posisi;
+			console.log(resp);
+			if (resp == "PENYERANG") {
+				posisi[0] += 1;
+			} else if (resp == "PEMAIN TENGAH") {
+				posisi[1] +=1;
 			}else{
-				kategori[2] +=1;
+				posisi[2] +=1;
 			}
 		}
-		console.log(kategori[0]);
-		console.log("============");
-		console.log(kategori[1]);
-		console.log("============");
-		console.log(kategori[2]);
+		console.log("PENYERANG :"+posisi[0]);
+		console.log("___________");
+		console.log("PEMAIN TENGAH :"+posisi[1]);
+		console.log("___________");
+		console.log("BEK :"+posisi[2]);
+		console.log("*********************************");
+		console.log("HASIL : ");
+		if (posisi[0] > posisi[1] && posisi[0] > posisi[2]) {
+			// console.log("PENYERANG");
+			return "PENYERANG"; 
+		} else if (posisi[1] > posisi[0] && posisi[1] > posisi[2]) {
+			// console.log("PEMAIN TENGAH");
+			return "PEMAIN TENGAH";
+		} else {
+			// console.log("BEK");
+			return "BEK";
+		}
 	}
 
-function getNeighbor(distance, test, train, k){
-	const distance = [];
-	const jarak = getEuDistance(distance);
-	distance.push(jarak);
-	for (let i = 0; i < array.length; i++) {
-		
+function getNeighbor(distance, k){
+	const result = [];
+	var predict = [];
+	for (let b = 1; b < k; b+=2) {
+		console.log("K :"+b);
+			// console.log(distance[b]);
+			result.push(distance[b])
+			var resp = getresp(result);
+			predict.push(resp)
 	}
+	return predict;
 }
 
-connection.query('SELECT * FROM contohlah', (err,rows)=>{
-	var train = rows;
-	var Euclidian = getEuDistance(train, testSet, train.length, testSet.length);
-	var response = getresp(Euclidian);
-});
+
+function readRow(callback){
+	connection.query('SELECT * FROM coldata', (err,rows)=>{
+		return callback(rows)
+	})
+}
+
+//MAIN FOR RUNNING THE APPS
+// connection.query('SELECT * FROM coldata', (err,rows, fields)=>{
+// 	var test = rows[16];
+// 	var pushTest = [];
+// 	pushTest.push(test)
+// 		var Eudistance = getEuDistance(rows, pushTest);
+// 		console.log("Eudistance : ");
+// 		console.log(Eudistance);
+// 		console.log("_____________________");
+// 			var nb = getNeighbor(Eudistance, Eudistance.length);
+// 			console.log(nb);
+		
+// })
+
+// module.exports =  readData;

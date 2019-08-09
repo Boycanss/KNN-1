@@ -16,12 +16,19 @@ const csrf = require('csurf');
 const notifier = require('node-notifier');
 var arraySort = require('array-sort');
 //_________________________________________
+var KNNfunction = require('./func');
+
+// EXAMPLE OF OOP IN JS
+const coba = require('./distance');
+
+
+
 
 var connection = mysql.createConnection({
 	host     : 'localhost',
 	user     : 'root',
 	password : '',
-	database : 'contohknn'
+	database : 'knn'
 });
 connection.connect(function(err){
 	if(!err) {
@@ -31,34 +38,37 @@ connection.connect(function(err){
 	}
 });
 
-//_____________________________________________
+const eujarak = coba.Distance;
+router.get('/ggwp',(req,res)=>{
+	connection.query('SELECT * FROM coldata', (err,rows)=>{
+		const latih = rows;
+		const uji = rows[2];
+		// for (var i = 0; i <= 4; i++) {
+		// 	const ujidata = rows[i];
+		// 	// console.log(ujidata);
+		// 	uji.push(ujidata);
+		// }
+		// console.log(uji);
+		// console.log(latih);
+		const dist = new eujarak(latih, uji);
+		dist.jarak();
+	})
+});
 
-router.get('/trybro',(req,res)=>{
-	var x1 = 3;
-	var y1 = 5;
-	var datak = [];
-	connection.query('SELECT * FROM contohlah', (err,rows,fs)=>{
-		console.log(rows)
-		// console.log(rows[1].y)
-		for (var i = 0; i < rows.length; i++) {
-			var distance += (rows[i].x-x1)**2 + (rows[i].y-y1)**2
-			// console.log("i>>>"+i+" = "+Math.sqrt(distance))
-			var dist = Math.sqrt(distance);
-			var tmpk = {data : i, jarak :dist}
-			datak.push(tmpk)
-		}
-		console.log(datak)
-		// var sortedd = arraySort(datak, 'jarak');
-		// console.log(sortedd);
+
+router.get('/knn', (req,res)=>{
+	var knn = new KNNfunction();
+	connection.query('SELECT * FROM contohlah', (err,rows)=>{
+		knn.runKNN(rows);
 	})
 })
 
-
-
 router.get('/', (req,res)=>{
-	connection.query('SELECT * FROM contohlah', (err,rows,fs)=>{
+	connection.query('SELECT * FROM coldata', (err,rows,fs)=>{
 		if (err) {res.send(err)} 
-			else {res.render('data.ejs', {data:rows})}
+			else {
+				res.render('index.ejs', {data:rows}
+				)}
 		})
 })
 

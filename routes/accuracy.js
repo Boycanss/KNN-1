@@ -14,8 +14,25 @@ const path = require('path');
 const csrf = require('csurf');
 const notifier = require('node-notifier');
 var arraySort = require('array-sort');
+//______________________________________________________________________________
+const Accuracy = function(testSet, prediction){
+    this.testSet = testSet;
+    this.prediction = prediction;
+}
 
-//+++++++++++++++++++++++++++++++++++++++++++++
+Accuracy.prototype.getAccuracy = function(){
+    console.log(this.prediction);
+    console.log(this.testSet);
+    var correct = 0;
+    for (let i = 0; i< this.testSet.length; i++) {
+        if (this.testSet[i] === this.prediction) {
+            correct += 1;
+        }
+    }
+    // console.log((correct / this.testSet.length) * 100.0);
+    return (correct / this.testSet.length) * 100.0;
+}
 
-var k = [{x:2, y:3}];
-console.log(k);
+module.exports = {
+    Accuracy : Accuracy
+};

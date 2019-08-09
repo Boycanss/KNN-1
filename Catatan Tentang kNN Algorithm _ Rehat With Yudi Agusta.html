@@ -1,0 +1,1413 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0074)https://yudiagusta.wordpress.com/2008/03/27/catatan-tentang-knn-algorithm/ -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head profile="http://gmpg.org/xfn/11"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Catatan Tentang kNN Algorithm  | Rehat With Yudi Agusta</title>
+<link rel="pingback" href="https://yudiagusta.wordpress.com/xmlrpc.php">
+<link rel="dns-prefetch" href="https://s2.wp.com/">
+<link rel="dns-prefetch" href="https://s1.wp.com/">
+<link rel="dns-prefetch" href="https://s0.wp.com/">
+<link rel="dns-prefetch" href="https://s.pubmine.com/">
+<link rel="dns-prefetch" href="https://x.bidswitch.net/">
+<link rel="dns-prefetch" href="https://static.criteo.net/">
+<link rel="dns-prefetch" href="https://ib.adnxs.com/">
+<link rel="dns-prefetch" href="https://aax.amazon-adsystem.com/">
+<link rel="dns-prefetch" href="https://bidder.criteo.com/">
+<link rel="dns-prefetch" href="https://cas.criteo.com/">
+<link rel="dns-prefetch" href="https://gum.criteo.com/">
+<link rel="dns-prefetch" href="https://ads.pubmatic.com/">
+<link rel="dns-prefetch" href="https://gads.pubmatic.com/">
+<link rel="dns-prefetch" href="https://tpc.googlesyndication.com/">
+<link rel="dns-prefetch" href="https://ad.doubleclick.net/">
+<link rel="dns-prefetch" href="https://googleads.g.doubleclick.net/">
+<link rel="dns-prefetch" href="https://www.googletagservices.com/">
+<link rel="dns-prefetch" href="https://cdn.switchadhub.com/">
+<link rel="dns-prefetch" href="https://delivery.g.switchadhub.com/">
+<link rel="dns-prefetch" href="https://delivery.swid.switchadhub.com/">
+<link rel="alternate" type="application/rss+xml" title="Rehat With Yudi Agusta » Feed" href="https://yudiagusta.wordpress.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="Rehat With Yudi Agusta » Comments Feed" href="https://yudiagusta.wordpress.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Rehat With Yudi Agusta » Catatan Tentang kNN Algorithm Comments Feed" href="https://yudiagusta.wordpress.com/2008/03/27/catatan-tentang-knn-algorithm/feed/">
+	<script type="text/javascript">
+		/* <![CDATA[ */
+		function addLoadEvent(func) {
+			var oldonload = window.onload;
+			if (typeof window.onload != 'function') {
+				window.onload = func;
+			} else {
+				window.onload = function () {
+					oldonload();
+					func();
+				}
+			}
+		}
+		/* ]]> */
+	</script>
+			<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/72x72\/","ext":".png","svgUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/s2.wp.com\/wp-includes\/js\/wp-emoji-release.min.js?m=1556893897h&ver=5.2-RC1-45278"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./Catatan Tentang kNN Algorithm _ Rehat With Yudi Agusta_files/wp-emoji-release.min.js.download" type="text/javascript" defer=""></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel="stylesheet" id="all-css-0-1" href="./Catatan Tentang kNN Algorithm _ Rehat With Yudi Agusta_files/saved_resource(2)" type="text/css" media="all">
+<!--[if lt IE 7]>
+<link rel='stylesheet' id='freshy-ie6-css'  href='https://s2.wp.com/wp-content/themes/pub/freshy/ie6.css?m=1323834012h&#038;ver=5.2-RC1-45278' type='text/css' media='all' />
+<![endif]-->
+<!--[if IE 7]>
+<link rel='stylesheet' id='freshy-ie7-css'  href='https://s2.wp.com/wp-content/themes/pub/freshy/ie7.css?m=1285366787h&#038;ver=5.2-RC1-45278' type='text/css' media='all' />
+<![endif]-->
+<link rel="stylesheet" id="all-css-4-1" href="./Catatan Tentang kNN Algorithm _ Rehat With Yudi Agusta_files/saved_resource(3)" type="text/css" media="all">
+<link rel="stylesheet" id="print-css-5-1" href="./Catatan Tentang kNN Algorithm _ Rehat With Yudi Agusta_files/global-print.css" type="text/css" media="print">
+<link rel="stylesheet" id="all-css-6-1" href="./Catatan Tentang kNN Algorithm _ Rehat With Yudi Agusta_files/saved_resource(4)" type="text/css" media="all">
+<script type="text/javascript">
+/* <![CDATA[ */
+var related_posts_js_options = {"post_heading":"h4"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Catatan Tentang kNN Algorithm _ Rehat With Yudi Agusta_files/saved_resource(5)"></script>
+<link rel="stylesheet" id="all-css-0-2" href="./Catatan Tentang kNN Algorithm _ Rehat With Yudi Agusta_files/style.css" type="text/css" media="all">
+<!--[if lt IE 8]>
+<link rel='stylesheet' id='highlander-comments-ie7-css'  href='https://s2.wp.com/wp-content/mu-plugins/highlander-comments/style-ie7.css?m=1351637563h&#038;ver=20110606' type='text/css' media='all' />
+<![endif]-->
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://yudiagusta.wordpress.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://s1.wp.com/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="A Trip to Jembatan Tukad Bangkung" href="https://yudiagusta.wordpress.com/2008/03/24/a-trip-to-jembatan-tukad-bangkung/">
+<link rel="next" title="Punya 3 NPWP: Apa Kata Dunia?" href="https://yudiagusta.wordpress.com/2008/03/28/punya-3-npwp-apa-kata-dunia/">
+<meta name="generator" content="WordPress.com">
+<link rel="canonical" href="https://yudiagusta.wordpress.com/2008/03/27/catatan-tentang-knn-algorithm/">
+<link rel="shortlink" href="https://wp.me/p2y6W-1j">
+<link rel="alternate" type="application/json+oembed" href="https://public-api.wordpress.com/oembed/?format=json&amp;url=https%3A%2F%2Fyudiagusta.wordpress.com%2F2008%2F03%2F27%2Fcatatan-tentang-knn-algorithm%2F&amp;for=wpcom-auto-discovery"><link rel="alternate" type="application/xml+oembed" href="https://public-api.wordpress.com/oembed/?format=xml&amp;url=https%3A%2F%2Fyudiagusta.wordpress.com%2F2008%2F03%2F27%2Fcatatan-tentang-knn-algorithm%2F&amp;for=wpcom-auto-discovery">
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Catatan Tentang kNN Algorithm">
+<meta property="og:url" content="https://yudiagusta.wordpress.com/2008/03/27/catatan-tentang-knn-algorithm/">
+<meta property="og:description" content="Kebetulan di milis indo-dm ada diskusi panjang tentang kNN algorithm, saya buat post untuk catatan. Definisi: kNN algorithm merupakan metode pengklasifikasian data yang bekerja relatif dengan cara …">
+<meta property="article:published_time" content="2008-03-27T03:05:42+00:00">
+<meta property="article:modified_time" content="2008-04-07T08:48:00+00:00">
+<meta property="og:site_name" content="Rehat With Yudi Agusta">
+<meta property="og:image" content="https://s0.wp.com/i/blank.jpg">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:site" content="@wordpressdotcom">
+<meta name="twitter:text:title" content="Catatan Tentang kNN Algorithm">
+<meta name="twitter:card" content="summary">
+<meta property="fb:app_id" content="249643311490">
+<meta property="article:publisher" content="https://www.facebook.com/WordPresscom">
+
+<!-- End Jetpack Open Graph Tags -->
+<link rel="shortcut icon" type="image/x-icon" href="https://s1.wp.com/i/favicon.ico" sizes="16x16 24x24 32x32 48x48">
+<link rel="icon" type="image/x-icon" href="https://s1.wp.com/i/favicon.ico" sizes="16x16 24x24 32x32 48x48">
+<link rel="apple-touch-icon-precomposed" href="https://s2.wp.com/i/webclip.png">
+<link rel="openid.server" href="https://yudiagusta.wordpress.com/?openidserver=1">
+<link rel="openid.delegate" href="https://yudiagusta.wordpress.com/">
+<link rel="search" type="application/opensearchdescription+xml" href="https://yudiagusta.wordpress.com/osd.xml" title="Rehat With Yudi Agusta">
+<link rel="search" type="application/opensearchdescription+xml" href="https://s1.wp.com/opensearch.xml" title="WordPress.com">
+		<style id="wpcom-hotfix-masterbar-style">
+			@media screen and (min-width: 783px) {
+				#wpadminbar .quicklinks li#wp-admin-bar-my-account.with-avatar > a img {
+					margin-top: 5px;
+				}
+			}
+		</style>
+		
+	<style type="text/css">
+	.menu.primary li a {
+		background-image:url("https://s2.wp.com/wp-content/themes/pub/freshy/images/menu/menu_triple.gif");
+	}
+	.menu.primary li a.first_menu {
+		background-image:url("https://s2.wp.com/wp-content/themes/pub/freshy/images/menu/menu_start_triple.gif");
+	}
+	.menu.primary li a.last_menu {
+		background-image:url("https://s2.wp.com/wp-content/themes/pub/freshy/images/menu/menu_end_triple.gif");
+	}
+
+	.description {
+		color:#ADCF20;
+	}
+	#content .commentlist dd.author_comment {
+		background-color:#a3cb00 !important;
+	}
+	html > body #content .commentlist dd.author_comment {
+		background-color:#a3cb00 !important;
+	}
+	#content .commentlist dt.author_comment .date {
+		color:#a3cb00 !important;
+		border-color:#a3cb00 !important;
+	}
+	#content .commentlist .author_comment .author,
+	#content .commentlist .author_comment .author a {
+		color:#a3cb00 !important;
+		border-color:#a3cb00 !important;
+	}
+	#sidebar h2 {
+		color:#f78b0c;
+		background-color:#FFFFFF;
+		border-bottom-color:#f78b0c;
+	}
+	#sidebar {
+		background-color:#FFFFFF;
+	}
+	*::-moz-selection {
+		background-color:#FF3C00;
+	}
+
+	#content a:hover {
+		border-bottom:1px dotted #FF3C00;
+	}
+
+	#sidebar a:hover,
+	#sidebar .current_page_item li a:hover,
+	#sidebar .current-cat li a:hover,
+	#sidebar .current_page_item a,
+	#sidebar .current-cat a ,
+	.readmore,
+	#content .postmetadata a
+	{
+		color : #FF3C00;
+	}
+
+	#title_image {
+		margin:0;
+		text-align:left;
+		display:block;
+		height:95px;
+	}
+
+	</style>
+
+			<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+				<style type="text/css">
+			.recentcomments a {
+				display: inline !important;
+				padding: 0 !important;
+				margin: 0 !important;
+			}
+
+			table.recentcommentsavatartop img.avatar, table.recentcommentsavatarend img.avatar {
+				border: 0px;
+				margin: 0;
+			}
+
+			table.recentcommentsavatartop a, table.recentcommentsavatarend a {
+				border: 0px !important;
+				background-color: transparent !important;
+			}
+
+			td.recentcommentsavatarend, td.recentcommentsavatartop {
+				padding: 0px 0px 1px 0px;
+				margin: 0px;
+			}
+
+			td.recentcommentstextend {
+				border: none !important;
+				padding: 0px 0px 2px 10px;
+			}
+
+			.rtl td.recentcommentstextend {
+				padding: 0px 10px 2px 0px;
+			}
+
+			td.recentcommentstexttop {
+				border: none;
+				padding: 0px 0px 0px 10px;
+			}
+
+			.rtl td.recentcommentstexttop {
+				padding: 0px 10px 0px 0px;
+			}
+		</style>
+		<style type="text/css">
+.widget_twitter li {
+	word-wrap: break-word;
+}
+</style>
+<meta name="application-name" content="Rehat With Yudi Agusta"><meta name="msapplication-window" content="width=device-width;height=device-height"><meta name="msapplication-tooltip" content="Yudi Agusta&#39;s Research Weblog - A Weblog For Data Mining and Clustering As Well As Other General Ideas and Interests"><meta name="msapplication-task" content="name=Subscribe;action-uri=https://yudiagusta.wordpress.com/feed/;icon-uri=https://s1.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=Sign up for a free blog;action-uri=http://wordpress.com/signup/;icon-uri=https://s1.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=WordPress.com Support;action-uri=http://support.wordpress.com/;icon-uri=https://s1.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=WordPress.com Forums;action-uri=http://forums.wordpress.com/;icon-uri=https://s1.wp.com/i/favicon.ico"><meta name="description" content="Kebetulan di milis indo-dm ada diskusi panjang tentang kNN algorithm, saya buat post untuk catatan. Definisi: kNN algorithm merupakan metode pengklasifikasian data yang bekerja relatif dengan cara yang lebih sederhana dibandingkan dengan metode pengklasifikasian data lainnya. Algorithm ini berusaha mengklasifikasikan data baru yang belum diketahui class-nya dengan memilih data sejumlah k yang letaknya terdekat dari…">
+
+	<style type="text/css">
+		#title_image {
+			background-image: url( https://yudiagusta.files.wordpress.com/2008/03/header-04.jpg );
+		}
+	</style>
+		<script type="text/javascript">
+		function __ATA_CC() {var v = document.cookie.match('(^|;) ?personalized-ads-consent=([^;]*)(;|$)');return v ? 1 : 0;}
+		var __ATA_PP = { pt: 1, ht: 0, tn: 'freshy', amp: false, siteid: 8982, blogid: 607782, consent: __ATA_CC() };
+		var __ATA = __ATA || {};
+		__ATA.cmd = __ATA.cmd || [];
+		__ATA.criteo = __ATA.criteo || {};
+		__ATA.criteo.cmd = __ATA.criteo.cmd || [];
+		</script>
+		<script type="text/javascript" src="./Catatan Tentang kNN Algorithm _ Rehat With Yudi Agusta_files/head.js.download" async=""></script><link rel="amphtml" href="https://yudiagusta.wordpress.com/2008/03/27/catatan-tentang-knn-algorithm/amp/"><style type="text/css" id="syntaxhighlighteranchor"></style>
+<script type="text/javascript">
+	window.google_analytics_uacct = "UA-52447-2";
+</script>
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-52447-2']);
+	_gaq.push(['_setDomainName', 'wordpress.com']);
+	_gaq.push(['_initData']);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+	})();
+</script><script type="text/javascript" async="" src="./Catatan Tentang kNN Algorithm _ Rehat With Yudi Agusta_files/ga.js.download"></script>
+<script src="./Catatan Tentang kNN Algorithm _ Rehat With Yudi Agusta_files/ata.js.download"></script><link rel="stylesheet" type="text/css" id="gravatar-card-css" href="./Catatan Tentang kNN Algorithm _ Rehat With Yudi Agusta_files/hovercard.min.css"><link rel="stylesheet" type="text/css" id="gravatar-card-services-css" href="./Catatan Tentang kNN Algorithm _ Rehat With Yudi Agusta_files/services.min.css"><style>[touch-action="none"]{ -ms-touch-action: none; touch-action: none; }
+body /shadow-deep/ [touch-action="none"]{ -ms-touch-action: none; touch-action: none; }
+[touch-action="auto"]{ -ms-touch-action: auto; touch-action: auto; }
+body /shadow-deep/ [touch-action="auto"]{ -ms-touch-action: auto; touch-action: auto; }
+[touch-action="pan-x"]{ -ms-touch-action: pan-x; touch-action: pan-x; }
+body /shadow-deep/ [touch-action="pan-x"]{ -ms-touch-action: pan-x; touch-action: pan-x; }
+[touch-action="pan-y"]{ -ms-touch-action: pan-y; touch-action: pan-y; }
+body /shadow-deep/ [touch-action="pan-y"]{ -ms-touch-action: pan-y; touch-action: pan-y; }
+[touch-action="pan-x pan-y"],[touch-action="pan-y pan-x"]{ -ms-touch-action: pan-x pan-y; touch-action: pan-x pan-y; }
+body /shadow-deep/ [touch-action="pan-x pan-y"],body /shadow-deep/ [touch-action="pan-y pan-x"]{ -ms-touch-action: pan-x pan-y; touch-action: pan-x pan-y; }
+</style><style type="text/css">.adtags-stiky-ad {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    background-color: #8a8a8f;
+    z-index: 16777271;
+    box-shadow: 0 1px 4px 0 rgba(51, 51, 51, 0.25), 0 0 1px 0 rgba(200, 199, 204, 0.5);
+}
+
+.adtags-stiky-ad__slot {
+    margin: 0 auto;
+}
+
+.adtags-sticky-ad__swipe-area {
+    width: 76px;
+    height: 36px;
+    position: absolute;
+    left: 50%;
+    bottom: -28px;
+    margin-left: -36px;
+}
+
+.adtags-stiky-ad__control {
+    width: 56px;
+    height: 16px;
+    top: 8px;
+    background-color: #8a8a8f;
+    position: absolute;
+    left: 50%;
+    margin-left: -28px;
+    border-bottom-right-radius: 24px;
+    border-bottom-left-radius: 24px;
+    box-shadow: 0 1px 1px 0 rgba(51, 51, 51, 0.25);
+}
+
+.adtags-stiky-ad_hidden {
+    display: none;
+}
+
+.adtags-stiky-ad__control {
+    cursor: pointer;
+}
+
+.adtags-stiky-ad__arrow {
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    width: 13px;
+    height: 2px;
+    background-color: #fff;
+    border-radius: 1px;
+    animation: 1s
+}
+
+.adtags-stiky-ad__arrow_left {
+    margin-left: -12px;
+}
+
+.adtags-stiky-ad__arrow_right {
+    margin-left: -1px;
+}
+
+@keyframes adtags-move-left-arrow-down {
+    from {transform: rotate(0deg)}
+    to {transform: rotate(-25deg);}
+}
+
+@keyframes adtags-move-right-arrow-down {
+    from {transform: rotate(0deg)}
+    to {transform: rotate(25deg);}
+}
+
+@keyframes adtags-move-left-arrow-up {
+    from {transform: rotate(0deg)}
+    to {transform: rotate(25deg);}
+}
+
+@keyframes adtags-move-right-arrow-up {
+    from {transform: rotate(0deg)}
+    to {transform: rotate(-25deg);}
+}
+
+@media (min-width: 960px) {
+    .adtags-stiky-ad_opened .adtags-stiky-ad__control:hover .adtags-stiky-ad__arrow_left {
+        animation: adtags-move-left-arrow-down .5s;
+        transform: rotate(-25deg);
+    }
+    
+    .adtags-stiky-ad_opened .adtags-stiky-ad__control:hover .adtags-stiky-ad__arrow_right {
+        animation: adtags-move-right-arrow-down .5s;
+        transform: rotate(25deg);
+    }
+    
+    .adtags-stiky-ad_closed .adtags-stiky-ad__control:hover .adtags-stiky-ad__arrow_left {
+        animation: adtags-move-left-arrow-up .5s;
+        transform: rotate(25deg);
+    }
+    
+    .adtags-stiky-ad_closed .adtags-stiky-ad__control:hover .adtags-stiky-ad__arrow_right {
+        animation: adtags-move-right-arrow-up .5s;
+        transform: rotate(-25deg);
+    }
+}
+</style><style type="text/css">.ata-controls {
+    text-align: right;
+    line-height: 10px;
+    height: 10px;
+}
+
+.ata-controls__complain-btn {
+    font-size: 6px;
+    vertical-align: middle;
+    font-family: Verdana, sans-serif;
+    color: #c8c7cc;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    cursor: pointer;
+}
+
+.ata-controls__complain-btn:hover {
+    color: #666666;
+}
+.ata-controls__complain-btn:active {
+    color: #5ac8fa;
+}
+
+.ata-controls__complain-btn_clicked,
+.ata-controls__complain-btn_clicked:hover,
+.ata-controls__complain-btn_clicked:active {
+    color: #000;
+    cursor: default;
+}
+</style><script src="./Catatan Tentang kNN Algorithm _ Rehat With Yudi Agusta_files/hbconf"></script></head>
+<body class="post-template-default single single-post postid-81 single-format-standard mp6 customizer-styles-applied highlander-enabled highlander-light">
+
+<div id="page">
+		<div id="wrapper">
+		<!-- header -->
+		<div id="header">
+			<div id="title">
+				<h1>
+					<a href="https://yudiagusta.wordpress.com/">
+						<span>Rehat With Yudi Agusta</span>
+					</a>
+				</h1>
+				<div class="description">
+					<small>Yudi Agusta’s Research Weblog – A Weblog For Data Mining and Clustering As Well As Other General Ideas and Interests</small>
+				</div>
+			</div>
+			<div id="title_image"></div>
+		</div>
+
+		<!-- main div -->
+		<div id="frame">
+
+		<!-- main menu -->
+		<ul class="menu page-menu primary">
+	<li class="page_item">
+		<a class="first_menu" href="https://yudiagusta.wordpress.com/">
+			Home		</a>
+	</li>
+
+	<li class="page_item"><a href="https://yudiagusta.wordpress.com/vitae/" title="Vitae">Vitae</a></li>
+<li class="page_item"><a href="https://yudiagusta.wordpress.com/thought/" title="Thought">Thought</a></li>
+<li class="page_item"><a href="https://yudiagusta.wordpress.com/research-notes/" title="Research Notes">Research Notes</a></li>
+<li class="page_item"><a href="https://yudiagusta.wordpress.com/clustering/" title="Clustering">Clustering</a></li>
+<li class="page_item"><a href="https://yudiagusta.wordpress.com/k-means/" title="K-Means">K-Means</a></li>
+<li class="page_item"><a href="https://yudiagusta.wordpress.com/mixture-modelling/" title="Mix Model">Mix Model</a></li>
+<li class="page_item"><a href="https://yudiagusta.wordpress.com/java/" title="Java">Java</a></li>
+<li class="page_item"><a href="https://yudiagusta.wordpress.com/knsi/" title="KNS&amp;I">KNS&amp;I</a></li>
+<li class="page_item"><a href="https://yudiagusta.wordpress.com/travelling-bali/" title="Travelling Bali">Travelling&nbsp;Bali</a></li>
+<li class="page_item"><a href="https://yudiagusta.wordpress.com/music/" title="Music">Music</a></li>
+<li class="page_item"><a href="https://yudiagusta.wordpress.com/misc/" title="Miscellaneous">Miscellaneous</a></li>
+
+	<li class="last_menu">
+		<!-- put an empty link to have the end of the menu anyway -->
+		<a class="last_menu_off"></a>
+	</li>
+</ul>
+
+		<hr style="display:none">
+
+	<div id="content">
+
+	
+		
+			<div class="post-81 post type-post status-publish format-standard hentry category-research" id="post-81">
+
+				<h2>Catatan Tentang kNN&nbsp;Algorithm</h2>
+
+				<small class="date">
+					<span class="date_day">27</span>
+					<span class="date_month">03</span>
+					<span class="date_year">2008</span>
+				</small>
+
+				<div class="entry">
+					<p>Kebetulan di milis <a href="http://groups.yahoo.com/group/indo-dm/">indo-dm</a> ada diskusi panjang tentang kNN algorithm, saya buat post untuk catatan.</p>
+<p><strong>Definisi</strong>: kNN algorithm merupakan metode pengklasifikasian data yang bekerja relatif dengan cara yang lebih sederhana dibandingkan dengan metode pengklasifikasian data lainnya. Algorithm ini berusaha mengklasifikasikan data baru yang belum diketahui class-nya dengan memilih data sejumlah k yang letaknya terdekat dari data baru tersebut. Class terbanyak dari data terdekat sejumlah k tersebut dipilih sebagai class yang diprediksikan untuk data yang baru. k umumnya ditentukan dalam jumlah ganjil untuk menghindari munculnya jumlah jarak yang sama dalam proses pengklasifikasian.</p>
+<p><strong>Beberapa hal yang diperhatikan untuk menggunakan algoritma ini dengan efektif dan dapat menghasilkan pengklasifikasian dengan akurasi tinggi antara lain</strong>:</p>
+<ul>
+<li>Pemilihan k: Pemilihan jumlah k yang paling tepat perlu dijajaki agar error rate bisa diperkecil. Dalam diskusi di <a href="http://groups.yahoo.com/group/indo-dm/">indo-dm</a>, Mas Anto menjelaskan bahwa pemilihan nilai k dapat dilakukan dengan coba-coba dengan cara seperti berikut ini:
+<p>——————————————————————————————-</p>
+<p>Misalnya ada 30 ribu sampel. Pilih secara random:<br>
+10 ribu sampel dipakai untuk “training” set<br>
+10 ribu sampel dipakai untuk validation-set<br>
+10 ribu sampel dipakai untuk test-set</p>
+<p>1. Pilih k=1<br>
+2. Asumsinya kita pakai complete storage k-nearest neighbor, jadi seluruh data pada training set dipakai sebagai prototype. Pakai training set untuk klasifikasi data pada validation-set dengan k=1. Catat score-nya, misalnya classification rate pada validation set.<br>
+3. Update k = k + 2.<br>
+4. Kembali ke step 2, dengan k yang baru</p>
+<p>Misalnya eksperimen sudah dilakukan hingga k=11. Selanjutnya tentukan k yang terbaik, yang ditunjukkan dari score yang diperoleh. Misalnya saat k=5 scorenya tertinggi. Selanjutnya pakai k=5 untuk menguji akurasi final pada test-set. Yang dipakai tentunya training set dan test set, sedangkan validation-set tidak dipakai lagi. (<em>Catatan sendiri: Ini mungkin kalau ingin memperbandingkan akurasi pengklasifikasian yang didapat dengan kNN dengan akurasi pengklasifikasian menggunakan classifier yang lain</em>.)</p>
+<p>Sumber: The Elements of Statistical Learning: Data Mining, Inference, and Prediction (Springer)</p>
+<p>——————————————————————————————-</p></li>
+<li>Feature Selection: Untuk meningkatkan tingkat akurasi pengklasifikasian, satu hal yang juga bisa dilakukan adalah dengan melakukan feature selection. Berbeda dengan Neural Network, dimana setiap input diberikan bobot yang berbeda-beda, kNN tidak memberikan bobot (weight) pada data inputnya. Dengan kata lain, semua data input mempunyai bobot (weight) dengan nilai 1. Untuk menghilangkan feature yang irrelevant, perlu dilakukan feature selection.
+<p>Untuk melakukan feature selection, ada banyak alternatif yang bisa digunakan dan harus dicoba-coba untuk mencari yang cocok. Ada dua jenis yang dibicarakan dalam diskusi yaitu tipe filter dan tipe wrapper. Tipe filter mempunyai low computation cost sedangkan tipe wrapper umumnya sangat time consuming. Filter method menggunakan intrinsic statistical properties dari data. Contohnya: Individual Merit-Base Feature Selection dengan selection criterion: Fisher Criterion, Bhattacharyya, Mahalanobis Distance atau Divergence. Metode filter ini memilih suatu feature subset secara independen terhadap kNN classifier dan dilakukan pada tahapan preprocessing. </p>
+<p>Untuk tipe wrapper, selection criterion memanfaatkan classification rate dari k-nearest neighbor. Untuk menghindari time consuming, proses pemilihan umumnya cukup dengan menggunakan classification rate saat k=1. Untuk tipe wrapper, perlu untuk terlebih dahulu melakukan feature subset selection sebelum menentukan subset mana yang mempunyai ranking terbaik. Feature subset selection bisa dilakukan dengan metode sequential forward selection, sequential backward selection, sequential floating selection, GA, among others. Selain dua metode di atas ada juga metode embedded selection yang memanfaatkan suatu learning machine dalam proses feature selection.</p>
+<p>Sumber: J.Kittler, “Feature Selection &amp; Extraction”, in Handbook of Pattern Recognition and Image Processing, Tzay Y. Young, King Sun Fu Ed. Academic Press, 1986.</p></li>
+<li>Feature Scaling: berfungsi untuk mengkonversi variable (feature) asli ke dalam bentuk variabel (feature) bayangan yang merupakan cerminan gabungan dari feature-feature yang diikutkan dalam proses pengklasifikasian. Cerminan gabungan ini berisikan variabel summary yang terkait erat dengan kelas-kelas model yang menjadi tujuan pengklasifikasian.
+<p>Beberapa metode yang dapat digunakan untuk melakukan feature scaling antara lain Principal Component Analysis (PCA), Multidimensional Scaling (MDS) dan metode-metode sejenisnya. Yang perlu diperhatikan dalam melakukan feature selection dan feature scaling adalah adanya kemungkinan informasi yang berguna terabaikan dan keadaan pengklasifikasian tidak benar-benar mencerminkan keadaan lapangan karena adanya loss of information tersebut.</p></li>
+<li>Searching Algorithm (Indexing Algorithm): Untuk mempercepat proses pencarian data terdekat sejumlah k, khususnya untuk data dalam jumlah besar, pemilihan searching algorithm dalam bentuk indexing algorithm dapat meningkatkan keefektifan proses pengklasifikasian. Ada beberapa searching algorithm yang bisa digunakan termasuk Linear Scan, Kd-trees, Ball-trees, Metric-trees, Locality Sensitive Hashing (LSH) dan Agglomerative Nearest Neighbour.
+<p>Sumber: Ian Witten, “Data Mining Practical Machine Learning Tools and Techniques”.</p></li>
+</ul>
+<p><strong>Beberapa property dari <em>kNN algorithm</em></strong>:</p>
+<ul>
+<li>k bertambah seiring dengan pertambahan jumlah data</li>
+<li>Seiring dengan jumlah data yang makin banyak dan mendekati infinity, error rate dari kNN algorithm tidak akan mencapai dua kali error rate dari Bayesian Classifiers. Dengan kata lain:
+<p>P(nb) &lt; P(nn) &lt; P(nb) * (2 – (P(nb) * (M / (M-1) ) ) ) &lt; 2*P(nb)</p>
+<p>Atau :</p>
+<p>P(nb) &lt; P(nn) &lt; 2*P(nb)</p>
+<p>Sumber: Nils J. Nilsson, “Introduction to Machine Learning”; Ville Kyrki, Pattern Recognition</p></li>
+</ul>
+<p>Mas Anto Satriyo Nugroho juga membuat catatan tentang <a href="http://asnugroho.wordpress.com/2007/01/26/k-nearest-neighbor-classifier/">kNN Algorithm </a>dari diskusi yang pernah dilakukan terdahulu.</p>
+<div id="atatags-370373-5ccd232214ee0">
+        <script type="text/javascript">
+            __ATA.cmd.push(function() {
+                __ATA.initVideoSlot('atatags-370373-5ccd232214ee0', {
+                    sectionId: '370373',
+                    format: 'inread'
+                });
+            });
+        </script>
+    </div>		<div class="wpcnt">
+			<div class="wpa wpmrec">
+				<span class="wpa-about">Advertisements</span>
+				<div class="u">		<div style="padding-bottom:15px;width:300px;height:250px;float:left;margin-right:5px;margin-top:0px">
+			<div id="atatags-26942-5ccd232214f0d"><div style="width: 300px; height: 250px;"><iframe frameborder="0" scrolling="no" width="300" height="250" style="border:none;margin:0;overflow:hidden;width:300px;height:250px;" src="./Catatan Tentang kNN Algorithm _ Rehat With Yudi Agusta_files/saved_resource.html"></iframe></div><div id="atatags-26942-5ccd232214f0d__controls" class="ata-controls" style="height:10px;width:300px;"><span id="atatags-26942-5ccd232214f0d__complain-btn" class="ata-controls__complain-btn" style="display: inline;">Report this ad</span></div></div>
+		</div>		<div style="padding-bottom:15px;width:300px;height:250px;float:left;margin-top:0px">
+			<div id="atatags-114160-5ccd232214f11"><div style="width: 300px; height: 250px;"><iframe frameborder="0" scrolling="no" width="300" height="250" style="border:none;margin:0;overflow:hidden;width:300px;height:250px;" src="./Catatan Tentang kNN Algorithm _ Rehat With Yudi Agusta_files/saved_resource(10).html"></iframe></div><div id="atatags-114160-5ccd232214f11__controls" class="ata-controls" style="height:10px;width:300px;"><span id="atatags-114160-5ccd232214f11__complain-btn" class="ata-controls__complain-btn" style="display: inline;">Report this ad</span></div></div>
+		</div></div>
+				
+			</div>
+		</div><div id="jp-post-flair" class="sharedaddy sd-like-enabled"><div class="sharedaddy sd-block sd-like jetpack-likes-widget-wrapper jetpack-likes-widget-loaded" id="like-post-wrapper-607782-81-5ccd232215302" data-src="//widgets.wp.com/likes/index.html?ver=20190321#blog_id=607782&amp;post_id=81&amp;origin=yudiagusta.wordpress.com&amp;obj_id=607782-81-5ccd232215302" data-name="like-post-frame-607782-81-5ccd232215302"><h3 class="sd-title">Like this:</h3><div class="likes-widget-placeholder post-likes-widget-placeholder" style="height: 55px; display: none;"><span class="button"><span>Like</span></span> <span class="loading">Loading...</span></div><iframe class="post-likes-widget jetpack-likes-widget" name="like-post-frame-607782-81-5ccd232215302" height="55px" width="100%" frameborder="0" src="./Catatan Tentang kNN Algorithm _ Rehat With Yudi Agusta_files/index.html"></iframe><span class="sd-text-color"></span><a class="sd-link-color"></a></div>
+<div id="jp-relatedposts" class="jp-relatedposts" style="display: block;">
+	<h3 class="jp-relatedposts-headline"><em>Related</em></h3>
+<div class="jp-relatedposts-items jp-relatedposts-items-minimal"><p class="jp-relatedposts-post jp-relatedposts-post0" data-post-id="20" data-post-format="false"><span class="jp-relatedposts-post-title"><a class="jp-relatedposts-post-a" href="https://yudiagusta.wordpress.com/2008/03/11/akurasi-hasil-pemodelan-k-means/" title="Akurasi Hasil Pemodelan K-Means
+
+Ada yang menanyakan tentang bagaimana mengetahui apakah model clustering yang didapatkan dengan k-means sudah cukup akurat atau tidak? Memang sedikit susah kalau kita ingin menilai tingkat akurasi pemodelan clustering yang kita dapatkan kalau kita menggunakan metode k-means. Ada suatu pendekatan yang sering dipasangkan dengan k-means dalam pemodelannya yaitu Partition Entroy…" rel="nofollow" data-origin="81" data-position="0">Akurasi Hasil Pemodelan K-Means</a></span><span class="jp-relatedposts-post-context">In "Clustering"</span></p><p class="jp-relatedposts-post jp-relatedposts-post1" data-post-id="162" data-post-format="false"><span class="jp-relatedposts-post-title"><a class="jp-relatedposts-post-a" href="https://yudiagusta.wordpress.com/2008/05/14/clustering-untuk-categorical-data/" title="Clustering Untuk Categorical Data
+
+Dalam sebuah diskusi di suatu milis, ada yang menanyakan tentang metode untuk melakukan clustering terhadap categorical data. Dari beberapa masukan yang ada, ada beberapa metode yang bisa digunakan untuk melakukan clustering jenis ini, termasuk di antaranya metode K-Modes clustering yang algoritmanya mirip dengan k-means (penjelasan tentang k-modes ada di dalam…" rel="nofollow" data-origin="81" data-position="1">Clustering Untuk Categorical Data</a></span><span class="jp-relatedposts-post-context">In "Clustering"</span></p><p class="jp-relatedposts-post jp-relatedposts-post2" data-post-id="134" data-post-format="false"><span class="jp-relatedposts-post-title"><a class="jp-relatedposts-post-a" href="https://yudiagusta.wordpress.com/2008/05/07/em-algorithm/" title="Expectation Maximisation Algorithm
+
+Expectation Maximisation Algorithm (EM Algorithm) adalah algoritma yang sering digunakan untuk menemukan nilai estimasi Maximum Likelihood (ML) dari parameter dalam sebuah model probabilistic, dimana model juga tergantung pada latent variabel yang belum diketahui. Dalam algoritma ini, ada dua hal yang dilakukan secara bergantian yaitu E step yang menghitung nilai ekspektasi…" rel="nofollow" data-origin="81" data-position="2">Expectation Maximisation Algorithm</a></span><span class="jp-relatedposts-post-context">In "Research"</span></p></div></div></div>				</div>
+
+				
+			</div>
+
+			<p class="navigation">
+				<span class="alignleft">« <a href="https://yudiagusta.wordpress.com/2008/03/24/a-trip-to-jembatan-tukad-bangkung/" rel="prev">A Trip to Jembatan Tukad&nbsp;Bangkung</a></span>
+				<span class="alignright"><a href="https://yudiagusta.wordpress.com/2008/03/28/punya-3-npwp-apa-kata-dunia/" rel="next">Punya 3 NPWP: Apa Kata&nbsp;Dunia?</a> »</span>
+			</p>
+			<br>
+			<h3>Actions</h3>
+			<ul class="postmetadata">
+					<li class="with_icon"><img class="icon" src="./Catatan Tentang kNN Algorithm _ Rehat With Yudi Agusta_files/feed-icon-16x16.gif" alt="rss" scale="0">&nbsp;<a href="https://yudiagusta.wordpress.com/2008/03/27/catatan-tentang-knn-algorithm/feed/">Comments RSS</a></li>
+							<li class="with_icon"><img class="icon" src="./Catatan Tentang kNN Algorithm _ Rehat With Yudi Agusta_files/trackback-icon-16x16.gif" alt="trackback" scale="0">&nbsp;<a href="https://yudiagusta.wordpress.com/2008/03/27/catatan-tentang-knn-algorithm/trackback/" rel="trackback" title="make a trackback">Trackback</a></li>
+							</ul>
+
+			<h3>Information</h3>
+			<ul class="postmetadata">
+					<!--<li>Author : Yudi Agusta</li>-->
+					<li>Date : March 27, 2008</li>
+									<li></li>
+					<li>Categories : <a href="https://yudiagusta.wordpress.com/category/research/" rel="category tag">Research</a></li>
+							</ul>
+
+				<h3 id="comments">11 responses</h3>
+
+	<dl class="commentlist">
+	
+	<dt class=" none">
+		<small class="date">
+			<span class="date_day">6</span>
+			<span class="date_month">05</span>
+			<span class="date_year">2016</span>
+		</small>
+	</dt>
+
+	<dd class="comment even thread-even depth-1 commentlist_item parent highlander-comment" id="comment-2824">
+
+		<div class="comment" id="div-comment-2824">
+			<strong class="comment-author vcard author" style="height:32px;line-height:32px;">
+			<img alt="" src="./Catatan Tentang kNN Algorithm _ Rehat With Yudi Agusta_files/ad516503a11cd5ca435acc9bb6523536.png" class="avatar avatar-32 grav-hashed grav-hijack" height="32" width="32" id="grav-a472e99649f39d0d001e9118ac37766d-0" originals="32" src-orig="https://1.gravatar.com/avatar/a472e99649f39d0d001e9118ac37766d?s=32&amp;d=https%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D32&amp;r=G" scale="1.5">
+			<span class="fn"><a href="http://www.nusamandiri.ac.id/" rel="external nofollow" class="url">untung saputra</a></span></strong> <span class="comment-meta commentmetadata"><small>(10:03:45)</small> : </span>
+			
+			<br style="display:none;">
+
+			<div class="comment_text">
+			<p>mohon petunjuknya pak untuk algoritma KNN itu  cara memberikan bobot pada suatu atribut data itu gimana pak . makasi pak dan untuk mencari nilai k itu seperti apa rumusnya makasi pak</p>
+			</div>
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="https://yudiagusta.wordpress.com/2008/03/27/catatan-tentang-knn-algorithm/?replytocom=2824#respond" data-commentid="2824" data-postid="81" data-belowelement="div-comment-2824" data-respondelement="respond" aria-label="Reply to untung saputra">Reply</a>			</div>
+		</div>
+	</dd>
+
+	<dt class=" author_comment">
+		<small class="date">
+			<span class="date_day">6</span>
+			<span class="date_month">05</span>
+			<span class="date_year">2016</span>
+		</small>
+	</dt>
+
+	<dd class="comment byuser comment-author-yudiagusta bypostauthor odd alt depth-2 commentlist_item parent highlander-comment" id="comment-2826">
+
+		<div class="comment" id="div-comment-2826">
+			<strong class="comment-author vcard author" style="height:32px;line-height:32px;">
+			<img alt="" src="./Catatan Tentang kNN Algorithm _ Rehat With Yudi Agusta_files/b2fb29447b0b07f8c91e58b6ac1f6e29.jpeg" class="avatar avatar-32 grav-hashed grav-hijack" height="32" width="32" id="grav-b2fb29447b0b07f8c91e58b6ac1f6e29-0" originals="32" src-orig="https://2.gravatar.com/avatar/b2fb29447b0b07f8c91e58b6ac1f6e29?s=32&amp;d=https%3A%2F%2F2.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D32&amp;r=G" scale="1.5">
+			<span class="fn"><a href="https://yudiagusta.wordpress.com/" rel="external nofollow" class="url">Yudi Agusta</a></span></strong> <span class="comment-meta commentmetadata"><small>(10:36:18)</small> : </span>
+			
+			<br style="display:none;">
+
+			<div class="comment_text">
+			<p>Bobot suatu atribut sangat penting untuk memberikan keseimbangan kontribusi dalam perhitungan jarak. Normalisasi adalah suatu cara untuk bisa digunakan untuk memberikan bobot yang sama antar variabel yang digunakan dalam perhitungan. Sementara untuk nilai k dalam KNN, sudah dijelaskan dalam tulisan saya tentang <a href="https://yudiagusta.wordpress.com/2008/03/27/catatan-tentang-knn-algorithm/">kNN</a>, dan yang pasti nilai k harus ganjil untuk bisa memberikan keputusan dalam pelaksanaan klasifikasi. Tks</p>
+			</div>
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="https://yudiagusta.wordpress.com/2008/03/27/catatan-tentang-knn-algorithm/?replytocom=2826#respond" data-commentid="2826" data-postid="81" data-belowelement="div-comment-2826" data-respondelement="respond" aria-label="Reply to Yudi Agusta">Reply</a>			</div>
+		</div>
+	</dd>
+
+	<dt class=" none">
+		<small class="date">
+			<span class="date_day">28</span>
+			<span class="date_month">08</span>
+			<span class="date_year">2018</span>
+		</small>
+	</dt>
+
+	<dd class="comment even depth-3 commentlist_item highlander-comment" id="comment-3199">
+
+		<div class="comment" id="div-comment-3199">
+			<strong class="comment-author vcard author" style="height:32px;line-height:32px;">
+			<img alt="" src="./Catatan Tentang kNN Algorithm _ Rehat With Yudi Agusta_files/ad516503a11cd5ca435acc9bb6523536(1).png" class="avatar avatar-32 grav-hashed grav-hijack" height="32" width="32" id="grav-ccf994f56560a3402d3ee77ee4f52ed3-0" originals="32" src-orig="https://0.gravatar.com/avatar/ccf994f56560a3402d3ee77ee4f52ed3?s=32&amp;d=https%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D32&amp;r=G" scale="1.5">
+			<span class="fn">Intan</span></strong> <span class="comment-meta commentmetadata"><small>(15:51:36)</small> : </span>
+			
+			<br style="display:none;">
+
+			<div class="comment_text">
+			<p>Ka dalam pemberian bobot pada atribut ke-i bagaimana caranya? yang aku tangkap caranya menggunakan normalisasi, bisa jelaskan detail nya gak ? aku cari-cari jurnal mereka langsung kasih bobot dalam tabel, kaya misalkan atribut ipk 0,7. atribut semester 0,88 tanpa diberitahu cara mendapatkannya. Tolong dijawab ya ka, makasih</p>
+			</div>
+			<div class="reply">
+							</div>
+		</div>
+	</dd>
+
+	<dt class=" none">
+		<small class="date">
+			<span class="date_day">21</span>
+			<span class="date_month">12</span>
+			<span class="date_year">2012</span>
+		</small>
+	</dt>
+
+	<dd class="comment odd alt thread-odd thread-alt depth-1 commentlist_item parent highlander-comment" id="comment-2055">
+
+		<div class="comment" id="div-comment-2055">
+			<strong class="comment-author vcard author" style="height:32px;line-height:32px;">
+			<img alt="" src="./Catatan Tentang kNN Algorithm _ Rehat With Yudi Agusta_files/ad516503a11cd5ca435acc9bb6523536(2).png" class="avatar avatar-32 grav-hashed grav-hijack" height="32" width="32" id="grav-8b040ac8881aa159bbdeaa7571f077c0-0" originals="32" src-orig="https://2.gravatar.com/avatar/8b040ac8881aa159bbdeaa7571f077c0?s=32&amp;d=https%3A%2F%2F2.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D32&amp;r=G" scale="1.5">
+			<span class="fn">aditya</span></strong> <span class="comment-meta commentmetadata"><small>(02:41:42)</small> : </span>
+			
+			<br style="display:none;">
+
+			<div class="comment_text">
+			<p>mohon di bantu cara menentukan nilai bobot pada akselerasi,bahan bakar,emisi dan setatus mutu saya memakai metode k-nn pada skipsi saya mohon bantuanya trimaksaih <img draggable="false" class="emoji" alt="🙂" src="./Catatan Tentang kNN Algorithm _ Rehat With Yudi Agusta_files/1f642.svg" scale="0"></p>
+			</div>
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="https://yudiagusta.wordpress.com/2008/03/27/catatan-tentang-knn-algorithm/?replytocom=2055#respond" data-commentid="2055" data-postid="81" data-belowelement="div-comment-2055" data-respondelement="respond" aria-label="Reply to aditya">Reply</a>			</div>
+		</div>
+	</dd>
+
+	<dt class=" author_comment">
+		<small class="date">
+			<span class="date_day">26</span>
+			<span class="date_month">02</span>
+			<span class="date_year">2014</span>
+		</small>
+	</dt>
+
+	<dd class="comment byuser comment-author-yudiagusta bypostauthor even depth-2 commentlist_item highlander-comment" id="comment-2332">
+
+		<div class="comment" id="div-comment-2332">
+			<strong class="comment-author vcard author" style="height:32px;line-height:32px;">
+			<img alt="" src="./Catatan Tentang kNN Algorithm _ Rehat With Yudi Agusta_files/b2fb29447b0b07f8c91e58b6ac1f6e29.jpeg" class="avatar avatar-32 grav-hashed grav-hijack" height="32" width="32" id="grav-b2fb29447b0b07f8c91e58b6ac1f6e29-1" originals="32" src-orig="https://2.gravatar.com/avatar/b2fb29447b0b07f8c91e58b6ac1f6e29?s=32&amp;d=https%3A%2F%2F2.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D32&amp;r=G" scale="1.5">
+			<span class="fn"><a href="https://yudiagusta.wordpress.com/" rel="external nofollow" class="url">Yudi Agusta</a></span></strong> <span class="comment-meta commentmetadata"><small>(17:14:36)</small> : </span>
+			
+			<br style="display:none;">
+
+			<div class="comment_text">
+			<p>Nilai bobot, maksudnya jarak mungkin ya. Jarak bisa dihitung dengan berbagai konsep jarak seperti Eucledian yang paling umum. Untuk konsep jarak yang lain bisa lihat di <a href="https://yudiagusta.wordpress.com/2008/05/13/similarity-measure/" rel="nofollow">https://yudiagusta.wordpress.com/2008/05/13/similarity-measure/</a></p>
+<p>Regards,</p>
+			</div>
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="https://yudiagusta.wordpress.com/2008/03/27/catatan-tentang-knn-algorithm/?replytocom=2332#respond" data-commentid="2332" data-postid="81" data-belowelement="div-comment-2332" data-respondelement="respond" aria-label="Reply to Yudi Agusta">Reply</a>			</div>
+		</div>
+	</dd>
+
+	<dt class=" none">
+		<small class="date">
+			<span class="date_day">13</span>
+			<span class="date_month">05</span>
+			<span class="date_year">2011</span>
+		</small>
+	</dt>
+
+	<dd class="comment odd alt thread-even depth-1 commentlist_item parent highlander-comment" id="comment-1021">
+
+		<div class="comment" id="div-comment-1021">
+			<strong class="comment-author vcard author" style="height:32px;line-height:32px;">
+			<img alt="" src="./Catatan Tentang kNN Algorithm _ Rehat With Yudi Agusta_files/ad516503a11cd5ca435acc9bb6523536(3).png" class="avatar avatar-32 grav-hashed grav-hijack" height="32" width="32" id="grav-f35d7b383a6dfd2418f71a07ce802e4c-0" originals="32" src-orig="https://0.gravatar.com/avatar/f35d7b383a6dfd2418f71a07ce802e4c?s=32&amp;d=https%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D32&amp;r=G" scale="1.5">
+			<span class="fn">anggra</span></strong> <span class="comment-meta commentmetadata"><small>(20:42:50)</small> : </span>
+			
+			<br style="display:none;">
+
+			<div class="comment_text">
+			<p>bisa minta alamat email??? soalnya saya ingin sharing dengan bapak… terima kasih</p>
+			</div>
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="https://yudiagusta.wordpress.com/2008/03/27/catatan-tentang-knn-algorithm/?replytocom=1021#respond" data-commentid="1021" data-postid="81" data-belowelement="div-comment-1021" data-respondelement="respond" aria-label="Reply to anggra">Reply</a>			</div>
+		</div>
+	</dd>
+
+	<dt class=" author_comment">
+		<small class="date">
+			<span class="date_day">26</span>
+			<span class="date_month">02</span>
+			<span class="date_year">2014</span>
+		</small>
+	</dt>
+
+	<dd class="comment byuser comment-author-yudiagusta bypostauthor even depth-2 commentlist_item highlander-comment" id="comment-2331">
+
+		<div class="comment" id="div-comment-2331">
+			<strong class="comment-author vcard author" style="height:32px;line-height:32px;">
+			<img alt="" src="./Catatan Tentang kNN Algorithm _ Rehat With Yudi Agusta_files/b2fb29447b0b07f8c91e58b6ac1f6e29.jpeg" class="avatar avatar-32 grav-hashed grav-hijack" height="32" width="32" id="grav-b2fb29447b0b07f8c91e58b6ac1f6e29-2" originals="32" src-orig="https://2.gravatar.com/avatar/b2fb29447b0b07f8c91e58b6ac1f6e29?s=32&amp;d=https%3A%2F%2F2.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D32&amp;r=G" scale="1.5">
+			<span class="fn"><a href="https://yudiagusta.wordpress.com/" rel="external nofollow" class="url">Yudi Agusta</a></span></strong> <span class="comment-meta commentmetadata"><small>(17:11:55)</small> : </span>
+			
+			<br style="display:none;">
+
+			<div class="comment_text">
+			<p>Bisa dilihat di vitae kita di : <a href="https://yudiagusta.wordpress.com/vitae/" rel="nofollow">https://yudiagusta.wordpress.com/vitae/</a></p>
+<p>Regards,</p>
+			</div>
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="https://yudiagusta.wordpress.com/2008/03/27/catatan-tentang-knn-algorithm/?replytocom=2331#respond" data-commentid="2331" data-postid="81" data-belowelement="div-comment-2331" data-respondelement="respond" aria-label="Reply to Yudi Agusta">Reply</a>			</div>
+		</div>
+	</dd>
+
+	<dt class=" none">
+		<small class="date">
+			<span class="date_day">3</span>
+			<span class="date_month">05</span>
+			<span class="date_year">2010</span>
+		</small>
+	</dt>
+
+	<dd class="comment odd alt thread-odd thread-alt depth-1 commentlist_item parent highlander-comment" id="comment-762">
+
+		<div class="comment" id="div-comment-762">
+			<strong class="comment-author vcard author" style="height:32px;line-height:32px;">
+			<img alt="" src="./Catatan Tentang kNN Algorithm _ Rehat With Yudi Agusta_files/ad516503a11cd5ca435acc9bb6523536(4).png" class="avatar avatar-32 grav-hashed grav-hijack" height="32" width="32" id="grav-40fef73bd32d4e2759caeb8ce5b7cde7-0" originals="32" src-orig="https://1.gravatar.com/avatar/40fef73bd32d4e2759caeb8ce5b7cde7?s=32&amp;d=https%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D32&amp;r=G" scale="1.5">
+			<span class="fn"><a href="http://javaroot.com/" rel="external nofollow" class="url">tama</a></span></strong> <span class="comment-meta commentmetadata"><small>(12:53:45)</small> : </span>
+			
+			<br style="display:none;">
+
+			<div class="comment_text">
+			<p>Tulisannya bermanfaat pak, tapi saya harus baca2 lagi referensi ttg K-NN ini, soalnya mo buat SPK mengenai Gizi pak, mungkin pak yudi bisa memberikan referensi untuk tugas akhir saya</p>
+			</div>
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="https://yudiagusta.wordpress.com/2008/03/27/catatan-tentang-knn-algorithm/?replytocom=762#respond" data-commentid="762" data-postid="81" data-belowelement="div-comment-762" data-respondelement="respond" aria-label="Reply to tama">Reply</a>			</div>
+		</div>
+	</dd>
+
+	<dt class=" author_comment">
+		<small class="date">
+			<span class="date_day">3</span>
+			<span class="date_month">05</span>
+			<span class="date_year">2010</span>
+		</small>
+	</dt>
+
+	<dd class="comment byuser comment-author-yudiagusta bypostauthor even depth-2 commentlist_item highlander-comment" id="comment-763">
+
+		<div class="comment" id="div-comment-763">
+			<strong class="comment-author vcard author" style="height:32px;line-height:32px;">
+			<img alt="" src="./Catatan Tentang kNN Algorithm _ Rehat With Yudi Agusta_files/b2fb29447b0b07f8c91e58b6ac1f6e29.jpeg" class="avatar avatar-32 grav-hashed grav-hijack" height="32" width="32" id="grav-b2fb29447b0b07f8c91e58b6ac1f6e29-3" originals="32" src-orig="https://2.gravatar.com/avatar/b2fb29447b0b07f8c91e58b6ac1f6e29?s=32&amp;d=https%3A%2F%2F2.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D32&amp;r=G" scale="1.5">
+			<span class="fn"><a href="https://yudiagusta.wordpress.com/" rel="external nofollow" class="url">Yudi Agusta</a></span></strong> <span class="comment-meta commentmetadata"><small>(16:09:21)</small> : </span>
+			
+			<br style="display:none;">
+
+			<div class="comment_text">
+			<p>Mungkin  bisa memanfaatkan internet untuk mencari referensi. Saya sempat menulis tentang ini sebelumnya: <a href="https://yudiagusta.wordpress.com/2008/04/11/tips-mencari-artikel-ilmiah-gratis/" rel="nofollow">https://yudiagusta.wordpress.com/2008/04/11/tips-mencari-artikel-ilmiah-gratis/</a>. Mungkin bisa bermanfaat. Kalau ada buku diktat kuliah tentang data mining, mungkin akan sangat membantu.</p>
+<p>Demikian semoga bisa jadi referensi.</p>
+			</div>
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="https://yudiagusta.wordpress.com/2008/03/27/catatan-tentang-knn-algorithm/?replytocom=763#respond" data-commentid="763" data-postid="81" data-belowelement="div-comment-763" data-respondelement="respond" aria-label="Reply to Yudi Agusta">Reply</a>			</div>
+		</div>
+	</dd>
+
+	<dt class=" none">
+		<small class="date">
+			<span class="date_day">5</span>
+			<span class="date_month">08</span>
+			<span class="date_year">2008</span>
+		</small>
+	</dt>
+
+	<dd class="comment odd alt thread-even depth-1 commentlist_item highlander-comment" id="comment-195">
+
+		<div class="comment" id="div-comment-195">
+			<strong class="comment-author vcard author" style="height:32px;line-height:32px;">
+			<img alt="" src="./Catatan Tentang kNN Algorithm _ Rehat With Yudi Agusta_files/ee427cfd50d93698bbd5a2ec405bbb14.png" class="avatar avatar-32 grav-hashed grav-hijack" height="32" width="32" id="grav-ee427cfd50d93698bbd5a2ec405bbb14-0" originals="32" src-orig="https://2.gravatar.com/avatar/ee427cfd50d93698bbd5a2ec405bbb14?s=32&amp;d=https%3A%2F%2F2.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D32&amp;r=G" scale="1.5">
+			<span class="fn">winda</span></strong> <span class="comment-meta commentmetadata"><small>(12:57:00)</small> : </span>
+			
+			<br style="display:none;">
+
+			<div class="comment_text">
+			<p>terima kasih pak untuk informasinya, sangat bermanfaat</p>
+<p>winda</p>
+			</div>
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="https://yudiagusta.wordpress.com/2008/03/27/catatan-tentang-knn-algorithm/?replytocom=195#respond" data-commentid="195" data-postid="81" data-belowelement="div-comment-195" data-respondelement="respond" aria-label="Reply to winda">Reply</a>			</div>
+		</div>
+	</dd>
+
+	<dt class=" none">
+		<small class="date">
+			<span class="date_day">28</span>
+			<span class="date_month">03</span>
+			<span class="date_year">2008</span>
+		</small>
+	</dt>
+
+	<dd class="pingback even thread-odd thread-alt depth-1 commentlist_item highlander-comment" id="comment-25">
+
+		<div class="comment" id="div-comment-25">
+			<strong class="comment-author vcard author" style="height:32px;line-height:32px;">
+			<img alt="" src="./Catatan Tentang kNN Algorithm _ Rehat With Yudi Agusta_files/f4c3e5e49df72abea73be20494fa9bfd.jpeg" class="avatar avatar-32" height="32" width="32" originals="32" src-orig="https://secure.gravatar.com/blavatar/f4c3e5e49df72abea73be20494fa9bfd?s=32" scale="1.5">
+			<span class="fn"><a href="http://asnugroho.wordpress.com/2007/01/26/k-nearest-neighbor-classifier/" rel="external nofollow" class="url">k-Nearest Neighbor Classifier « Corat-coret Anto S. Nugroho</a></span></strong> <span class="comment-meta commentmetadata"><small>(03:18:56)</small> : </span>
+			
+			<br style="display:none;">
+
+			<div class="comment_text">
+			<p>[…] Lihat juga catatan diskusi 2008 oleh mas […]</p>
+			</div>
+			<div class="reply">
+				<a rel="nofollow" class="comment-reply-link" href="https://yudiagusta.wordpress.com/2008/03/27/catatan-tentang-knn-algorithm/?replytocom=25#respond" data-commentid="25" data-postid="81" data-belowelement="div-comment-25" data-respondelement="respond" aria-label="Reply to k-Nearest Neighbor Classifier « Corat-coret Anto S. Nugroho">Reply</a>			</div>
+		</div>
+	</dd>
+	</dl>
+	<div class="navigation">
+		<div class="alignleft"></div>
+		<div class="alignright"></div>
+	</div>
+
+
+	<div id="respond" class="comment-respond js">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="https://yudiagusta.wordpress.com/2008/03/27/catatan-tentang-knn-algorithm/#respond" style="display:none;">Cancel reply</a></small></h3>			<form action="https://yudiagusta.wordpress.com/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+				<input type="hidden" id="highlander_comment_nonce" name="highlander_comment_nonce" value="eeb884506f"><input type="hidden" name="_wp_http_referer" value="/2008/03/27/catatan-tentang-knn-algorithm/">
+<input type="hidden" name="hc_post_as" id="hc_post_as" value="guest">
+
+<div class="comment-form-field comment-textarea">
+	
+	<div id="comment-form-comment"><textarea aria-hidden="true" tabindex="-1" style="position: absolute; top: -999px; left: 0px; right: auto; bottom: auto; border: 0px; padding: 0px; box-sizing: content-box; overflow-wrap: break-word; overflow: hidden; transition: none 0s ease 0s; height: 0px !important; min-height: 0px !important; font-family: Arial, Helvetica, Tahoma, Verdana, sans-serif; font-size: 14px; font-weight: 400; font-style: normal; letter-spacing: 0px; text-transform: none; text-decoration: none solid rgba(0, 0, 0, 0.7); word-spacing: 0px; text-indent: 0px; line-height: 18.2px; width: 488px;" class="autosizejs "></textarea><textarea id="comment" name="comment" title="Enter your comment here..." placeholder="Enter your comment here..." style="height: 38px; overflow: hidden; overflow-wrap: break-word; resize: none;"></textarea></div>
+</div>
+
+<div id="comment-form-identity" style="display: none;">
+	<div id="comment-form-nascar">
+		<p>Fill in your details below or click an icon to log in:</p>
+		<ul>
+			<li class="selected" style="display:none;">
+				<a href="https://yudiagusta.wordpress.com/2008/03/27/catatan-tentang-knn-algorithm/#comment-form-guest" id="postas-guest" class="nascar-signin-link" title="Login via Guest">
+									</a>
+			</li>
+			<li>
+				<a href="https://yudiagusta.wordpress.com/2008/03/27/catatan-tentang-knn-algorithm/#comment-form-load-service:WordPress.com" id="postas-wordpress" class="nascar-signin-link" title="Login via WordPress.com">
+					<svg xmlns="http://www.w3.org/2000/svg" role="presentation" viewBox="0 0 24 24"><rect x="0" fill="none" width="24" height="24"></rect><g><path fill="#0087be" d="M12.158 12.786l-2.698 7.84c.806.236 1.657.365 2.54.365 1.047 0 2.05-.18 2.986-.51-.024-.037-.046-.078-.065-.123l-2.762-7.57zM3.008 12c0 3.56 2.07 6.634 5.068 8.092L3.788 8.342c-.5 1.117-.78 2.354-.78 3.658zm15.06-.454c0-1.112-.398-1.88-.74-2.48-.456-.74-.883-1.368-.883-2.11 0-.825.627-1.595 1.51-1.595.04 0 .078.006.116.008-1.598-1.464-3.73-2.36-6.07-2.36-3.14 0-5.904 1.613-7.512 4.053.21.008.41.012.58.012.94 0 2.395-.114 2.395-.114.484-.028.54.684.057.74 0 0-.487.058-1.03.086l3.275 9.74 1.968-5.902-1.4-3.838c-.485-.028-.944-.085-.944-.085-.486-.03-.43-.77.056-.742 0 0 1.484.114 2.368.114.94 0 2.397-.114 2.397-.114.486-.028.543.684.058.74 0 0-.488.058-1.03.086l3.25 9.665.897-2.997c.456-1.17.684-2.137.684-2.907zm1.82-3.86c.04.286.06.593.06.924 0 .912-.17 1.938-.683 3.22l-2.746 7.94c2.672-1.558 4.47-4.454 4.47-7.77 0-1.564-.4-3.033-1.1-4.314zM12 22C6.486 22 2 17.514 2 12S6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"></path></g></svg>				</a>
+			</li>
+			<li>
+			<iframe id="googleplus-sign-in" name="googleplus-sign-in" src="./Catatan Tentang kNN Algorithm _ Rehat With Yudi Agusta_files/saved_resource(11).html" width="24" height="24" scrolling="no" allowtransparency="true" seamless="seamless" frameborder="0"></iframe>
+			</li>
+			<li>
+				<a href="https://yudiagusta.wordpress.com/2008/03/27/catatan-tentang-knn-algorithm/#comment-form-load-service:Twitter" id="postas-twitter" class="nascar-signin-link" title="Login via Twitter">
+					<svg xmlns="http://www.w3.org/2000/svg" role="presentation" viewBox="0 0 24 24"><rect x="0" fill="none" width="24" height="24"></rect><g><path fill="#1DA1F2" d="M22.23 5.924c-.736.326-1.527.547-2.357.646.847-.508 1.498-1.312 1.804-2.27-.793.47-1.67.812-2.606.996C18.325 4.498 17.258 4 16.078 4c-2.266 0-4.103 1.837-4.103 4.103 0 .322.036.635.106.935-3.41-.17-6.433-1.804-8.457-4.287-.353.607-.556 1.312-.556 2.064 0 1.424.724 2.68 1.825 3.415-.673-.022-1.305-.207-1.86-.514v.052c0 1.988 1.415 3.647 3.293 4.023-.344.095-.707.145-1.08.145-.265 0-.522-.026-.773-.074.522 1.63 2.038 2.817 3.833 2.85-1.404 1.1-3.174 1.757-5.096 1.757-.332 0-.66-.02-.98-.057 1.816 1.164 3.973 1.843 6.29 1.843 7.547 0 11.675-6.252 11.675-11.675 0-.178-.004-.355-.012-.53.802-.578 1.497-1.3 2.047-2.124z"></path></g></svg>				</a>
+			</li>
+			<li>
+				<a href="https://yudiagusta.wordpress.com/2008/03/27/catatan-tentang-knn-algorithm/#comment-form-load-service:Facebook" id="postas-facebook" class="nascar-signin-link" title="Login via Facebook">
+					<svg xmlns="http://www.w3.org/2000/svg" role="presentation" viewBox="0 0 24 24"><rect x="0" fill="none" width="24" height="24"></rect><g><path fill="#3B5998" d="M20.007 3H3.993C3.445 3 3 3.445 3 3.993v16.013c0 .55.445.994.993.994h8.62v-6.97H10.27V11.31h2.346V9.31c0-2.325 1.42-3.59 3.494-3.59.993 0 1.847.073 2.096.106v2.43h-1.438c-1.128 0-1.346.537-1.346 1.324v1.734h2.69l-.35 2.717h-2.34V21h4.587c.548 0 .993-.445.993-.993V3.993c0-.548-.445-.993-.993-.993z"></path></g></svg>				</a>
+			</li>
+		</ul>
+	</div>
+
+	<div id="comment-form-guest" class="comment-form-service selected">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+<a href="https://gravatar.com/site/signup/" target="_blank">				<img src="./Catatan Tentang kNN Algorithm _ Rehat With Yudi Agusta_files/ad516503a11cd5ca435acc9bb6523536(5).png" alt="Gravatar" width="25" class="no-grav" originals="25" scale="1.5">
+</a>			</div>
+
+				<div class="comment-form-fields">
+				<div class="comment-form-field comment-form-email">
+					<label for="email">Email <span class="required">(required)</span> <span class="nopublish">(Address never made public)</span></label>
+					<div class="comment-form-input"><input id="email" name="email" type="email" value=""></div>
+				</div>
+				<div class="comment-form-field comment-form-author">
+					<label for="author">Name <span class="required">(required)</span></label>
+					<div class="comment-form-input"><input id="author" name="author" type="text" value=""></div>
+				</div>
+				<div class="comment-form-field comment-form-url">
+					<label for="url">Website</label>
+					<div class="comment-form-input"><input id="url" name="url" type="url" value=""></div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+
+	<div id="comment-form-wordpress" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="./Catatan Tentang kNN Algorithm _ Rehat With Yudi Agusta_files/ad516503a11cd5ca435acc9bb6523536(5).png" alt="WordPress.com Logo" width="25" class="no-grav" originals="25" scale="1.5">
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="wp_avatar" id="wordpress-avatar" class="comment-meta-wordpress" value="">
+				<input type="hidden" name="wp_user_id" id="wordpress-user_id" class="comment-meta-wordpress" value="">
+				<input type="hidden" name="wp_access_token" id="wordpress-access_token" class="comment-meta-wordpress" value="">
+						<p class="comment-form-posting-as pa-wordpress">
+			<strong></strong>
+			You are commenting using your <span class="skimlinks-unlinked">WordPress.com</span> account.			<span class="comment-form-log-out">
+				(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( &#39;wordpress&#39; );">Log&nbsp;Out</a>&nbsp;/&nbsp;
+				<a href="https://yudiagusta.wordpress.com/2008/03/27/catatan-tentang-knn-algorithm/#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)
+			</span>
+			<span class="pa-icon"><svg xmlns="http://www.w3.org/2000/svg" role="presentation" viewBox="0 0 24 24"><rect x="0" fill="none" width="24" height="24"></rect><g><path fill="#0087be" d="M12.158 12.786l-2.698 7.84c.806.236 1.657.365 2.54.365 1.047 0 2.05-.18 2.986-.51-.024-.037-.046-.078-.065-.123l-2.762-7.57zM3.008 12c0 3.56 2.07 6.634 5.068 8.092L3.788 8.342c-.5 1.117-.78 2.354-.78 3.658zm15.06-.454c0-1.112-.398-1.88-.74-2.48-.456-.74-.883-1.368-.883-2.11 0-.825.627-1.595 1.51-1.595.04 0 .078.006.116.008-1.598-1.464-3.73-2.36-6.07-2.36-3.14 0-5.904 1.613-7.512 4.053.21.008.41.012.58.012.94 0 2.395-.114 2.395-.114.484-.028.54.684.057.74 0 0-.487.058-1.03.086l3.275 9.74 1.968-5.902-1.4-3.838c-.485-.028-.944-.085-.944-.085-.486-.03-.43-.77.056-.742 0 0 1.484.114 2.368.114.94 0 2.397-.114 2.397-.114.486-.028.543.684.058.74 0 0-.488.058-1.03.086l3.25 9.665.897-2.997c.456-1.17.684-2.137.684-2.907zm1.82-3.86c.04.286.06.593.06.924 0 .912-.17 1.938-.683 3.22l-2.746 7.94c2.672-1.558 4.47-4.454 4.47-7.77 0-1.564-.4-3.033-1.1-4.314zM12 22C6.486 22 2 17.514 2 12S6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"></path></g></svg></span>
+		</p>
+					</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-googleplus" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="./Catatan Tentang kNN Algorithm _ Rehat With Yudi Agusta_files/ad516503a11cd5ca435acc9bb6523536(5).png" alt="Google photo" width="25" class="no-grav" originals="25" scale="1.5">
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="googleplus_avatar" id="googleplus-avatar" class="comment-meta-googleplus" value="">
+				<input type="hidden" name="googleplus_user_id" id="googleplus-user_id" class="comment-meta-googleplus" value="">
+				<input type="hidden" name="googleplus_access_token" id="googleplus-access_token" class="comment-meta-googleplus" value="">
+						<p class="comment-form-posting-as pa-googleplus">
+			<strong></strong>
+			You are commenting using your Google account.			<span class="comment-form-log-out">
+				(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( &#39;googleplus&#39; );">Log&nbsp;Out</a>&nbsp;/&nbsp;
+				<a href="https://yudiagusta.wordpress.com/2008/03/27/catatan-tentang-knn-algorithm/#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)
+			</span>
+			<span class="pa-icon"><svg xmlns="http://www.w3.org/2000/svg" role="presentation" x="0px" y="0px" viewBox="0 0 60 60"><path fill="#519bf7" d="M56.3,30c0,-1.6 -0.2,-3.4 -0.6,-5h-3.1H42.2H30v10.6h14.8C44,39.3 42,42 39.1,43.9l8.8,6.8C53,46 56.3,39 56.3,30z"></path><path fill="#3db366" d="M30,57.5c6.7,0 13.1,-2.4 17.9,-6.8l-8.8,-6.8c-2.5,1.6 -5.6,2.4 -9.1,2.4c-7.2,0 -13.3,-4.7 -15.4,-11.2l-9.3,7.1C9.8,51.3 19.1,57.5 30,57.5z"></path><path fill="#fdc600" d="M5.3,42.2l9.3,-7.1c-0.5,-1.6 -0.8,-3.3 -0.8,-5.1s0.3,-3.5 0.8,-5.1l-9.3,-7.1C3.5,21.5 2.5,25.6 2.5,30S3.5,38.5 5.3,42.2z"></path><path fill="#f15b44" d="M40.1,17.4l8,-8C43.3,5.1 37,2.5 30,2.5C19.1,2.5 9.8,8.7 5.3,17.8l9.3,7.1c2.1,-6.5 8.2,-11.1 15.4,-11.1C33.9,13.7 37.4,15.1 40.1,17.4z"></path></svg></span>
+		</p>
+					</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-twitter" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="./Catatan Tentang kNN Algorithm _ Rehat With Yudi Agusta_files/ad516503a11cd5ca435acc9bb6523536(5).png" alt="Twitter picture" width="25" class="no-grav" originals="25" scale="1.5">
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="twitter_avatar" id="twitter-avatar" class="comment-meta-twitter" value="">
+				<input type="hidden" name="twitter_user_id" id="twitter-user_id" class="comment-meta-twitter" value="">
+				<input type="hidden" name="twitter_access_token" id="twitter-access_token" class="comment-meta-twitter" value="">
+						<p class="comment-form-posting-as pa-twitter">
+			<strong></strong>
+			You are commenting using your Twitter account.			<span class="comment-form-log-out">
+				(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( &#39;twitter&#39; );">Log&nbsp;Out</a>&nbsp;/&nbsp;
+				<a href="https://yudiagusta.wordpress.com/2008/03/27/catatan-tentang-knn-algorithm/#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)
+			</span>
+			<span class="pa-icon"><svg xmlns="http://www.w3.org/2000/svg" role="presentation" viewBox="0 0 24 24"><rect x="0" fill="none" width="24" height="24"></rect><g><path fill="#1DA1F2" d="M22.23 5.924c-.736.326-1.527.547-2.357.646.847-.508 1.498-1.312 1.804-2.27-.793.47-1.67.812-2.606.996C18.325 4.498 17.258 4 16.078 4c-2.266 0-4.103 1.837-4.103 4.103 0 .322.036.635.106.935-3.41-.17-6.433-1.804-8.457-4.287-.353.607-.556 1.312-.556 2.064 0 1.424.724 2.68 1.825 3.415-.673-.022-1.305-.207-1.86-.514v.052c0 1.988 1.415 3.647 3.293 4.023-.344.095-.707.145-1.08.145-.265 0-.522-.026-.773-.074.522 1.63 2.038 2.817 3.833 2.85-1.404 1.1-3.174 1.757-5.096 1.757-.332 0-.66-.02-.98-.057 1.816 1.164 3.973 1.843 6.29 1.843 7.547 0 11.675-6.252 11.675-11.675 0-.178-.004-.355-.012-.53.802-.578 1.497-1.3 2.047-2.124z"></path></g></svg></span>
+		</p>
+					</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-facebook" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="./Catatan Tentang kNN Algorithm _ Rehat With Yudi Agusta_files/ad516503a11cd5ca435acc9bb6523536(5).png" alt="Facebook photo" width="25" class="no-grav" originals="25" scale="1.5">
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="fb_avatar" id="facebook-avatar" class="comment-meta-facebook" value="">
+				<input type="hidden" name="fb_user_id" id="facebook-user_id" class="comment-meta-facebook" value="">
+				<input type="hidden" name="fb_access_token" id="facebook-access_token" class="comment-meta-facebook" value="">
+						<p class="comment-form-posting-as pa-facebook">
+			<strong></strong>
+			You are commenting using your Facebook account.			<span class="comment-form-log-out">
+				(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( &#39;facebook&#39; );">Log&nbsp;Out</a>&nbsp;/&nbsp;
+				<a href="https://yudiagusta.wordpress.com/2008/03/27/catatan-tentang-knn-algorithm/#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)
+			</span>
+			<span class="pa-icon"><svg xmlns="http://www.w3.org/2000/svg" role="presentation" viewBox="0 0 24 24"><rect x="0" fill="none" width="24" height="24"></rect><g><path fill="#3B5998" d="M20.007 3H3.993C3.445 3 3 3.445 3 3.993v16.013c0 .55.445.994.993.994h8.62v-6.97H10.27V11.31h2.346V9.31c0-2.325 1.42-3.59 3.494-3.59.993 0 1.847.073 2.096.106v2.43h-1.438c-1.128 0-1.346.537-1.346 1.324v1.734h2.69l-.35 2.717h-2.34V21h4.587c.548 0 .993-.445.993-.993V3.993c0-.548-.445-.993-.993-.993z"></path></g></svg></span>
+		</p>
+					</div>
+	
+		</div>
+	</div>
+
+
+	<div id="comment-form-load-service" class="comment-form-service">
+		<div class="comment-form-posting-as-cancel"><a href="javascript:HighlanderComments.cancelExternalWindow();">Cancel</a></div>
+		<p>Connecting to %s</p>
+	</div>
+
+</div>
+
+<script type="text/javascript">
+var highlander_expando_javascript = function(){
+	var input = document.createElement( 'input' ),
+	    comment = jQuery( '#comment' );
+
+	if ( 'placeholder' in input ) {
+		comment.attr( 'placeholder', jQuery( '.comment-textarea label' ).remove().text() );
+	}
+
+	// Expando Mode: start small, then auto-resize on first click + text length
+	jQuery( '#comment-form-identity' ).hide();
+	jQuery( '#comment-form-subscribe' ).hide();
+	jQuery( '#commentform .form-submit' ).hide();
+
+	comment.css( { 'height':'10px' } ).one( 'focus', function() {
+		var timer = setInterval( HighlanderComments.resizeCallback, 10 )
+		jQuery( this ).animate( { 'height': HighlanderComments.initialHeight } ).delay( 100 ).queue( function(n) { clearInterval( timer ); HighlanderComments.resizeCallback(); n(); } );
+		jQuery( '#comment-form-identity' ).slideDown();
+		jQuery( '#comment-form-subscribe' ).slideDown();
+		jQuery( '#commentform .form-submit' ).slideDown();
+	});
+}
+jQuery(document).ready( highlander_expando_javascript );
+</script>
+
+<div id="comment-form-subscribe" style="display: none;">
+	<p class="comment-subscription-form"><input type="checkbox" name="subscribe" id="subscribe" value="subscribe" style="width: auto;"> <label class="subscribe-label" id="subscribe-label" for="subscribe" style="display: inline;">Notify me of new comments via email.</label></p></div>
+
+
+
+
+<p class="form-submit" style="display: none;"><input name="submit" type="submit" id="comment-submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="81" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="5657e88568"></p>
+<input type="hidden" name="genseq" value="1556947746">
+<p style="display: none;"></p>			<input type="hidden" id="ak_js" name="ak_js" value="1556947747527"></form>
+			</div><!-- #respond -->
+	<div style="clear: both"></div>
+		
+	<!-- nothing found -->
+	
+	</div>
+
+	<hr style="display:none">
+
+	<!-- sidebar -->
+	
+	<div id="sidebar">
+				<div>
+		<div id="text-1" class="widget widget_text">			<div class="textwidget">| <a href="https://yudiagusta.wordpress.com/feed"> All Posts</a> | <a href="https://yudiagusta.wordpress.com/comments/feed"> All Comments</a> |
+</div>
+		</div><div id="search-2" class="widget widget_search"><form method="get" id="searchform" action="https://yudiagusta.wordpress.com/">
+<p>
+<input size="12" type="text" value="" name="s" id="s"><input class="btn" type="submit" id="searchsubmit" value="Search">
+</p>
+</form>
+</div><div id="pages-2" class="widget widget_pages"><h2 class="title">Personal Info</h2>		<ul>
+			<li class="page_item page-item-12 page_item_has_children"><a href="https://yudiagusta.wordpress.com/vitae/">Vitae</a>
+<ul class="children">
+	<li class="page_item page-item-2237"><a href="https://yudiagusta.wordpress.com/vitae/todays-schedule/">Today’s Schedule</a></li>
+	<li class="page_item page-item-5"><a href="https://yudiagusta.wordpress.com/vitae/research/">Research</a></li>
+	<li class="page_item page-item-9"><a href="https://yudiagusta.wordpress.com/vitae/publikasi-talk/">Publikasi/Talk</a></li>
+	<li class="page_item page-item-34"><a href="https://yudiagusta.wordpress.com/vitae/lecture/">Lecture</a></li>
+</ul>
+</li>
+<li class="page_item page-item-127"><a href="https://yudiagusta.wordpress.com/misc/">Miscellaneous</a></li>
+		</ul>
+			</div>		<div id="recent-posts-2" class="widget widget_recent_entries">		<h2 class="title">Recent Posts</h2>		<ul>
+											<li>
+					<a href="https://yudiagusta.wordpress.com/2016/06/01/algoritma-genetika/">Algoritma Genetika</a>
+									</li>
+											<li>
+					<a href="https://yudiagusta.wordpress.com/2016/04/21/performance-reports-of-a-project-activity/">Performance Reports of A Project&nbsp;Activity</a>
+									</li>
+											<li>
+					<a href="https://yudiagusta.wordpress.com/2016/04/21/visits-to-malaysia/">Visits to Malaysia</a>
+									</li>
+											<li>
+					<a href="https://yudiagusta.wordpress.com/2016/04/20/tenganan-the-bali-aga-village/">Tenganan – The Bali Aga&nbsp;Village</a>
+									</li>
+											<li>
+					<a href="https://yudiagusta.wordpress.com/2015/03/13/an-introduction-to-project-management/">An Introduction to Project&nbsp;Management</a>
+									</li>
+											<li>
+					<a href="https://yudiagusta.wordpress.com/2014/09/03/data-warehousing/">Data Warehousing</a>
+									</li>
+											<li>
+					<a href="https://yudiagusta.wordpress.com/2014/08/23/2014-montpellier-internship/">2014 Montpellier Internship</a>
+									</li>
+											<li>
+					<a href="https://yudiagusta.wordpress.com/2014/07/04/minimum-message-length/">Minimum Message Length</a>
+									</li>
+											<li>
+					<a href="https://yudiagusta.wordpress.com/2014/06/01/rules-vs-policies/">Rules Vs Policies</a>
+									</li>
+											<li>
+					<a href="https://yudiagusta.wordpress.com/2014/05/08/nulis-huruf-jepang-lagi-horray/">Nulis Huruf Jepang (日本語) Lagi,&nbsp;Horray!!</a>
+									</li>
+					</ul>
+		</div><div id="text-2" class="widget widget_text"><h2 class="title">Favorite Posts (31-12-2013)</h2>			<div class="textwidget"><a href="https://yudiagusta.wordpress.com/2008/04/08/tips-pembuatan-literature-review/">TIPS: Pembuatan Literature Review</a><br>
+<a href="https://yudiagusta.wordpress.com/2008/05/13/similarity-measure/">Similarity Measure</a><br>
+<a href="https://yudiagusta.wordpress.com/2010/01/04/tips-menurunkan-kolesterol/">TIPS: Menurunkan Kolesterol</a><br>
+<a href="https://yudiagusta.wordpress.com/2008/03/10/penelitian-teknologi-informasi-ti/"> Penelitian Teknologi Informasi (TI)</a><br>
+<a href="https://yudiagusta.wordpress.com/2008/03/27/catatan-tentang-knn-algorithm/">Catatan Tentang kNN Algorithm</a><br>
+<a href="https://yudiagusta.wordpress.com/2008/03/11/akurasi-hasil-pemodelan-k-means/">Akurasi Hasil Pemodelan K-Means</a><br>
+<a href="https://yudiagusta.wordpress.com/2008/08/04/association-rules/">Association Rules</a><br>
+<a href="https://yudiagusta.wordpress.com/2008/06/09/wavelet-transform/"> Wavelet Transform</a><br>
+<a href="https://yudiagusta.wordpress.com/2008/06/30/toya-bungkah-danau-batur/">Toya Bungkah - Danau Batur</a><br>
+<a href="https://yudiagusta.wordpress.com/2010/02/11/bayesian-networks/">Bayesian Networks</a><br></div>
+		</div><div id="text-90034601" class="widget widget_text"><h2 class="title">Recommended Pages</h2>			<div class="textwidget"><a href="https://yudiagusta.wordpress.com/clustering/">An Overview of Clustering</a><br>
+<a href="https://yudiagusta.wordpress.com/k-means/">K-Means Clustering</a><br>
+<a href="https://yudiagusta.wordpress.com/mixture-modelling/">Clustering by Mixture Modelling</a><br>
+<a href="https://yudiagusta.wordpress.com/vitae/research-notes/">A Compilation of My Research Notes</a><br>
+<a href="https://yudiagusta.wordpress.com/java/">A Compilation of Java OOP Notes</a><br>
+<a href="https://yudiagusta.wordpress.com/thought/">A Compilation of My Thought</a><br>
+<a href="https://yudiagusta.wordpress.com/knsi/">A Compilation of KNS&amp;I Papers</a><br>
+<a href="https://yudiagusta.wordpress.com/music/">A Compilation of Music and Lyrics</a><br>
+<a href="https://yudiagusta.wordpress.com/travelling-bali/">A Compilation of My Bali Travelling</a><br>
+<a href="https://yudiagusta.wordpress.com/misc/">A Compilation of Miscellaneous Posts</a><br></div>
+		</div><div id="text-96007101" class="widget widget_text"><h2 class="title">Related Links</h2>			<div class="textwidget"><a href="http://bali.bps.go.id/">BPS Provinsi Bali</a><br>
+<a href="http://www.stikom-bali.ac.id/">STMIK Stikom Bali</a><br>
+<a href="http://tech.groups.yahoo.com/group/sc-ina/">Soft Computing Mailing List</a><br>
+<a href="http://tech.groups.yahoo.com/group/indo-dm/">Data Mining Mailing List</a><br></div>
+		</div><div id="recent-comments-2" class="widget widget_recent_comments"><h2 class="title">Recent Comments</h2>				<table class="recentcommentsavatar" cellspacing="0" cellpadding="0" border="0">
+					<tbody><tr><td title="batutahibnu17" class="recentcommentsavatartop" style="height:16px; width:16px;"><a href="http://batutahibnu17.wordpress.com/" rel="nofollow"><img alt="" src="./Catatan Tentang kNN Algorithm _ Rehat With Yudi Agusta_files/979ab9ec46304595c60f0bbd1b82f985.jpeg" class="avatar avatar-16 grav-hashed" height="16" width="16" id="grav-979ab9ec46304595c60f0bbd1b82f985-0" originals="16" src-orig="https://0.gravatar.com/avatar/979ab9ec46304595c60f0bbd1b82f985?s=16&amp;d=https%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D16&amp;r=G" scale="1.5"></a></td><td class="recentcommentstexttop" style=""><a href="http://batutahibnu17.wordpress.com/" rel="nofollow">batutahibnu17</a> on <a href="https://yudiagusta.wordpress.com/2008/05/13/similarity-measure/comment-page-1/#comment-3366">Similarity Measure</a></td></tr><tr><td title="Yudi Agusta" class="recentcommentsavatarend" style="height:16px; width:16px;"><a href="https://yudiagusta.wordpress.com/" rel="nofollow"><img alt="" src="./Catatan Tentang kNN Algorithm _ Rehat With Yudi Agusta_files/b2fb29447b0b07f8c91e58b6ac1f6e29(1).jpeg" class="avatar avatar-16 grav-hashed" height="16" width="16" id="grav-b2fb29447b0b07f8c91e58b6ac1f6e29-4" originals="16" src-orig="https://2.gravatar.com/avatar/b2fb29447b0b07f8c91e58b6ac1f6e29?s=16&amp;d=https%3A%2F%2F2.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D16&amp;r=G" scale="1.5"></a></td><td class="recentcommentstextend" style=""><a href="https://yudiagusta.wordpress.com/" rel="nofollow">Yudi Agusta</a> on <a href="https://yudiagusta.wordpress.com/2008/05/13/similarity-measure/comment-page-1/#comment-3357">Similarity Measure</a></td></tr><tr><td title="batutahibnu17" class="recentcommentsavatarend" style="height:16px; width:16px;"><a href="http://batutahibnu17.wordpress.com/" rel="nofollow"><img alt="" src="./Catatan Tentang kNN Algorithm _ Rehat With Yudi Agusta_files/979ab9ec46304595c60f0bbd1b82f985.jpeg" class="avatar avatar-16 grav-hashed" height="16" width="16" id="grav-979ab9ec46304595c60f0bbd1b82f985-1" originals="16" src-orig="https://0.gravatar.com/avatar/979ab9ec46304595c60f0bbd1b82f985?s=16&amp;d=https%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D16&amp;r=G" scale="1.5"></a></td><td class="recentcommentstextend" style=""><a href="http://batutahibnu17.wordpress.com/" rel="nofollow">batutahibnu17</a> on <a href="https://yudiagusta.wordpress.com/2008/05/13/similarity-measure/comment-page-1/#comment-3355">Similarity Measure</a></td></tr><tr><td title="fachruddin mansyur" class="recentcommentsavatarend" style="height:16px; width:16px;"><a href="https://plus.google.com/113825764109113269807" rel="nofollow"><img alt="" src="./Catatan Tentang kNN Algorithm _ Rehat With Yudi Agusta_files/photo.jpg" class="avatar avatar-16" height="16" width="16" srcset="https://i1.wp.com/lh3.googleusercontent.com/-qSU2a5c2kbk/AAAAAAAAAAI/AAAAAAAAAAA/AKxrwcZ5slZmRYDUMraIvCuNeGte1oU50A/mo/photo.jpg?resize=16%2C16&amp;ssl=1&amp;zoom=2 1.5x" scale="1.5"></a></td><td class="recentcommentstextend" style=""><a href="https://plus.google.com/113825764109113269807" rel="nofollow">fachruddin mansyur</a> on <a href="https://yudiagusta.wordpress.com/clustering/comment-page-4/#comment-3352">Clustering</a></td></tr><tr><td title="Yudi Agusta" class="recentcommentsavatarend" style="height:16px; width:16px;"><a href="https://yudiagusta.wordpress.com/" rel="nofollow"><img alt="" src="./Catatan Tentang kNN Algorithm _ Rehat With Yudi Agusta_files/b2fb29447b0b07f8c91e58b6ac1f6e29(1).jpeg" class="avatar avatar-16 grav-hashed" height="16" width="16" id="grav-b2fb29447b0b07f8c91e58b6ac1f6e29-5" originals="16" src-orig="https://2.gravatar.com/avatar/b2fb29447b0b07f8c91e58b6ac1f6e29?s=16&amp;d=https%3A%2F%2F2.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D16&amp;r=G" scale="1.5"></a></td><td class="recentcommentstextend" style=""><a href="https://yudiagusta.wordpress.com/" rel="nofollow">Yudi Agusta</a> on <a href="https://yudiagusta.wordpress.com/2014/02/23/analytical-hierarchy-process-ahp/comment-page-1/#comment-3322">Analytical Hierarchy Process…</a></td></tr>				</tbody></table>
+				</div><div id="calendar-2" class="widget widget_calendar"><h2 class="title">Posting Calendar</h2><div id="calendar_wrap" class="calendar_wrap"><table id="wp-calendar">
+	<caption>March 2008</caption>
+	<thead>
+	<tr>
+		<th scope="col" title="Monday">M</th>
+		<th scope="col" title="Tuesday">T</th>
+		<th scope="col" title="Wednesday">W</th>
+		<th scope="col" title="Thursday">T</th>
+		<th scope="col" title="Friday">F</th>
+		<th scope="col" title="Saturday">S</th>
+		<th scope="col" title="Sunday">S</th>
+	</tr>
+	</thead>
+
+	<tfoot>
+	<tr>
+		<td colspan="3" id="prev" class="pad">&nbsp;</td>
+		<td class="pad">&nbsp;</td>
+		<td colspan="3" id="next"><a href="https://yudiagusta.wordpress.com/2008/04/">Apr »</a></td>
+	</tr>
+	</tfoot>
+
+	<tbody>
+	<tr>
+		<td colspan="5" class="pad">&nbsp;</td><td>1</td><td>2</td>
+	</tr>
+	<tr>
+		<td><a href="https://yudiagusta.wordpress.com/2008/03/03/" aria-label="Posts published on March 3, 2008">3</a></td><td><a href="https://yudiagusta.wordpress.com/2008/03/04/" aria-label="Posts published on March 4, 2008">4</a></td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td>
+	</tr>
+	<tr>
+		<td><a href="https://yudiagusta.wordpress.com/2008/03/10/" aria-label="Posts published on March 10, 2008">10</a></td><td><a href="https://yudiagusta.wordpress.com/2008/03/11/" aria-label="Posts published on March 11, 2008">11</a></td><td><a href="https://yudiagusta.wordpress.com/2008/03/12/" aria-label="Posts published on March 12, 2008">12</a></td><td><a href="https://yudiagusta.wordpress.com/2008/03/13/" aria-label="Posts published on March 13, 2008">13</a></td><td><a href="https://yudiagusta.wordpress.com/2008/03/14/" aria-label="Posts published on March 14, 2008">14</a></td><td>15</td><td>16</td>
+	</tr>
+	<tr>
+		<td><a href="https://yudiagusta.wordpress.com/2008/03/17/" aria-label="Posts published on March 17, 2008">17</a></td><td>18</td><td><a href="https://yudiagusta.wordpress.com/2008/03/19/" aria-label="Posts published on March 19, 2008">19</a></td><td>20</td><td>21</td><td>22</td><td>23</td>
+	</tr>
+	<tr>
+		<td><a href="https://yudiagusta.wordpress.com/2008/03/24/" aria-label="Posts published on March 24, 2008">24</a></td><td>25</td><td>26</td><td><a href="https://yudiagusta.wordpress.com/2008/03/27/" aria-label="Posts published on March 27, 2008">27</a></td><td><a href="https://yudiagusta.wordpress.com/2008/03/28/" aria-label="Posts published on March 28, 2008">28</a></td><td>29</td><td>30</td>
+	</tr>
+	<tr>
+		<td>31</td>
+		<td class="pad" colspan="6">&nbsp;</td>
+	</tr>
+	</tbody>
+	</table></div></div><div id="categories-1" class="widget widget_categories"><h2 class="title">CATEGORY</h2>		<ul>
+				<li class="cat-item cat-item-1356"><a href="https://yudiagusta.wordpress.com/category/blogroll/">Blogroll</a> (1)
+</li>
+	<li class="cat-item cat-item-20099"><a href="https://yudiagusta.wordpress.com/category/clustering/">Clustering</a> (18)
+</li>
+	<li class="cat-item cat-item-406"><a href="https://yudiagusta.wordpress.com/category/family/">Family</a> (27)
+</li>
+	<li class="cat-item cat-item-54"><a href="https://yudiagusta.wordpress.com/category/general/">General</a> (18)
+</li>
+	<li class="cat-item cat-item-1017"><a href="https://yudiagusta.wordpress.com/category/java/">Java</a> (3)
+</li>
+	<li class="cat-item cat-item-3869"><a href="https://yudiagusta.wordpress.com/category/memories/">Memories</a> (15)
+</li>
+	<li class="cat-item cat-item-18"><a href="https://yudiagusta.wordpress.com/category/music/">Music</a> (21)
+</li>
+	<li class="cat-item cat-item-510"><a href="https://yudiagusta.wordpress.com/category/project-management/">Project Management</a> (2)
+</li>
+	<li class="cat-item cat-item-668"><a href="https://yudiagusta.wordpress.com/category/research/">Research</a> (54)
+</li>
+	<li class="cat-item cat-item-3384"><a href="https://yudiagusta.wordpress.com/category/systems/">Systems</a> (5)
+</li>
+	<li class="cat-item cat-item-2378"><a href="https://yudiagusta.wordpress.com/category/thought/">Thought</a> (15)
+</li>
+	<li class="cat-item cat-item-200"><a href="https://yudiagusta.wordpress.com/category/travel/">Travel</a> (23)
+</li>
+	<li class="cat-item cat-item-131"><a href="https://yudiagusta.wordpress.com/category/work/">Work</a> (14)
+</li>
+		</ul>
+			</div><div id="archives-2" class="widget widget_archive"><h2 class="title">Archives</h2>		<ul>
+				<li><a href="https://yudiagusta.wordpress.com/2016/06/">June 2016</a>&nbsp;(1)</li>
+	<li><a href="https://yudiagusta.wordpress.com/2016/04/">April 2016</a>&nbsp;(3)</li>
+	<li><a href="https://yudiagusta.wordpress.com/2015/03/">March 2015</a>&nbsp;(1)</li>
+	<li><a href="https://yudiagusta.wordpress.com/2014/09/">September 2014</a>&nbsp;(1)</li>
+	<li><a href="https://yudiagusta.wordpress.com/2014/08/">August 2014</a>&nbsp;(1)</li>
+	<li><a href="https://yudiagusta.wordpress.com/2014/07/">July 2014</a>&nbsp;(1)</li>
+	<li><a href="https://yudiagusta.wordpress.com/2014/06/">June 2014</a>&nbsp;(1)</li>
+	<li><a href="https://yudiagusta.wordpress.com/2014/05/">May 2014</a>&nbsp;(1)</li>
+	<li><a href="https://yudiagusta.wordpress.com/2014/02/">February 2014</a>&nbsp;(1)</li>
+	<li><a href="https://yudiagusta.wordpress.com/2012/12/">December 2012</a>&nbsp;(1)</li>
+	<li><a href="https://yudiagusta.wordpress.com/2012/08/">August 2012</a>&nbsp;(1)</li>
+	<li><a href="https://yudiagusta.wordpress.com/2012/01/">January 2012</a>&nbsp;(2)</li>
+	<li><a href="https://yudiagusta.wordpress.com/2011/12/">December 2011</a>&nbsp;(1)</li>
+	<li><a href="https://yudiagusta.wordpress.com/2011/11/">November 2011</a>&nbsp;(2)</li>
+	<li><a href="https://yudiagusta.wordpress.com/2011/10/">October 2011</a>&nbsp;(1)</li>
+	<li><a href="https://yudiagusta.wordpress.com/2011/09/">September 2011</a>&nbsp;(1)</li>
+	<li><a href="https://yudiagusta.wordpress.com/2011/08/">August 2011</a>&nbsp;(1)</li>
+	<li><a href="https://yudiagusta.wordpress.com/2011/07/">July 2011</a>&nbsp;(1)</li>
+	<li><a href="https://yudiagusta.wordpress.com/2011/06/">June 2011</a>&nbsp;(1)</li>
+	<li><a href="https://yudiagusta.wordpress.com/2011/05/">May 2011</a>&nbsp;(1)</li>
+	<li><a href="https://yudiagusta.wordpress.com/2011/04/">April 2011</a>&nbsp;(1)</li>
+	<li><a href="https://yudiagusta.wordpress.com/2011/03/">March 2011</a>&nbsp;(2)</li>
+	<li><a href="https://yudiagusta.wordpress.com/2011/02/">February 2011</a>&nbsp;(1)</li>
+	<li><a href="https://yudiagusta.wordpress.com/2011/01/">January 2011</a>&nbsp;(1)</li>
+	<li><a href="https://yudiagusta.wordpress.com/2010/12/">December 2010</a>&nbsp;(1)</li>
+	<li><a href="https://yudiagusta.wordpress.com/2010/11/">November 2010</a>&nbsp;(1)</li>
+	<li><a href="https://yudiagusta.wordpress.com/2010/10/">October 2010</a>&nbsp;(2)</li>
+	<li><a href="https://yudiagusta.wordpress.com/2010/09/">September 2010</a>&nbsp;(1)</li>
+	<li><a href="https://yudiagusta.wordpress.com/2010/08/">August 2010</a>&nbsp;(2)</li>
+	<li><a href="https://yudiagusta.wordpress.com/2010/07/">July 2010</a>&nbsp;(3)</li>
+	<li><a href="https://yudiagusta.wordpress.com/2010/06/">June 2010</a>&nbsp;(2)</li>
+	<li><a href="https://yudiagusta.wordpress.com/2010/05/">May 2010</a>&nbsp;(2)</li>
+	<li><a href="https://yudiagusta.wordpress.com/2010/04/">April 2010</a>&nbsp;(1)</li>
+	<li><a href="https://yudiagusta.wordpress.com/2010/03/">March 2010</a>&nbsp;(3)</li>
+	<li><a href="https://yudiagusta.wordpress.com/2010/02/">February 2010</a>&nbsp;(1)</li>
+	<li><a href="https://yudiagusta.wordpress.com/2010/01/">January 2010</a>&nbsp;(3)</li>
+	<li><a href="https://yudiagusta.wordpress.com/2009/12/">December 2009</a>&nbsp;(2)</li>
+	<li><a href="https://yudiagusta.wordpress.com/2009/11/">November 2009</a>&nbsp;(5)</li>
+	<li><a href="https://yudiagusta.wordpress.com/2009/10/">October 2009</a>&nbsp;(3)</li>
+	<li><a href="https://yudiagusta.wordpress.com/2009/09/">September 2009</a>&nbsp;(3)</li>
+	<li><a href="https://yudiagusta.wordpress.com/2009/08/">August 2009</a>&nbsp;(4)</li>
+	<li><a href="https://yudiagusta.wordpress.com/2009/07/">July 2009</a>&nbsp;(2)</li>
+	<li><a href="https://yudiagusta.wordpress.com/2009/06/">June 2009</a>&nbsp;(1)</li>
+	<li><a href="https://yudiagusta.wordpress.com/2009/05/">May 2009</a>&nbsp;(1)</li>
+	<li><a href="https://yudiagusta.wordpress.com/2009/04/">April 2009</a>&nbsp;(1)</li>
+	<li><a href="https://yudiagusta.wordpress.com/2009/03/">March 2009</a>&nbsp;(1)</li>
+	<li><a href="https://yudiagusta.wordpress.com/2009/02/">February 2009</a>&nbsp;(2)</li>
+	<li><a href="https://yudiagusta.wordpress.com/2009/01/">January 2009</a>&nbsp;(3)</li>
+	<li><a href="https://yudiagusta.wordpress.com/2008/12/">December 2008</a>&nbsp;(5)</li>
+	<li><a href="https://yudiagusta.wordpress.com/2008/11/">November 2008</a>&nbsp;(2)</li>
+	<li><a href="https://yudiagusta.wordpress.com/2008/10/">October 2008</a>&nbsp;(3)</li>
+	<li><a href="https://yudiagusta.wordpress.com/2008/09/">September 2008</a>&nbsp;(2)</li>
+	<li><a href="https://yudiagusta.wordpress.com/2008/08/">August 2008</a>&nbsp;(3)</li>
+	<li><a href="https://yudiagusta.wordpress.com/2008/07/">July 2008</a>&nbsp;(5)</li>
+	<li><a href="https://yudiagusta.wordpress.com/2008/06/">June 2008</a>&nbsp;(8)</li>
+	<li><a href="https://yudiagusta.wordpress.com/2008/05/">May 2008</a>&nbsp;(8)</li>
+	<li><a href="https://yudiagusta.wordpress.com/2008/04/">April 2008</a>&nbsp;(14)</li>
+	<li><a href="https://yudiagusta.wordpress.com/2008/03/">March 2008</a>&nbsp;(16)</li>
+		</ul>
+			</div>		<div class="wpcnt">
+			<div class="wpa wpwidesky">
+				<span class="wpa-about">Advertisements</span>
+				<div class="u">
+							<div style="padding-bottom:15px;width:160px;height:600px;">
+			<div id="atatags-286348-5ccd23222a76d"><div style="width: 160px; height: 600px;"><iframe frameborder="0" scrolling="no" width="160" height="600" style="border:none;margin:0;overflow:hidden;width:160px;height:600px;" src="./Catatan Tentang kNN Algorithm _ Rehat With Yudi Agusta_files/saved_resource(12).html"></iframe></div><div id="atatags-286348-5ccd23222a76d__controls" class="ata-controls" style="height:10px;width:160px;"><span id="atatags-286348-5ccd23222a76d__complain-btn" class="ata-controls__complain-btn" style="display: inline;">Report this ad</span></div></div>
+		</div>
+				</div>
+				
+			</div>
+		</div>		</div>
+	</div>
+
+	<br style="clear:both"><!-- without this little <br /> NS6 and IE5PC do not stretch the frame div down to encopass the content DIVs -->
+</div>
+
+<!-- footer -->
+
+		<hr style="display:none">
+
+		<div id="footer">
+			<small class="footer_content">
+			<a href="https://wordpress.com/?ref=footer_website">Create a free website or blog at WordPress.com.</a> 			</small>
+		</div>
+
+	</div> <!--- end of the <div id="wrapper"> (from header.php) -->
+</div> <!--- end of the <div id="page"> (from header.php) -->
+
+<!--  -->
+<script type="text/javascript" src="./Catatan Tentang kNN Algorithm _ Rehat With Yudi Agusta_files/gprofiles.js.download"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":""};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Catatan Tentang kNN Algorithm _ Rehat With Yudi Agusta_files/wpgroho.js.download"></script>
+
+	<script>
+		//initialize and attach hovercards to all gravatars
+		jQuery( document ).ready( function( $ ) {
+
+			if (typeof Gravatar === "undefined"){
+				return;
+			}
+
+			if ( typeof Gravatar.init !== "function" ) {
+				return;
+			}			
+
+			Gravatar.profile_cb = function( hash, id ) {
+				WPGroHo.syncProfileData( hash, id );
+			};
+			Gravatar.my_hash = WPGroHo.my_hash;
+			Gravatar.init( 'body', '#wp-admin-bar-my-account' );
+		});
+	</script>
+
+		<div style="display:none">
+	<div class="grofile-hash-map-a472e99649f39d0d001e9118ac37766d">
+	</div>
+	<div class="grofile-hash-map-b2fb29447b0b07f8c91e58b6ac1f6e29">
+	</div>
+	<div class="grofile-hash-map-ccf994f56560a3402d3ee77ee4f52ed3">
+	</div>
+	<div class="grofile-hash-map-8b040ac8881aa159bbdeaa7571f077c0">
+	</div>
+	<div class="grofile-hash-map-f35d7b383a6dfd2418f71a07ce802e4c">
+	</div>
+	<div class="grofile-hash-map-40fef73bd32d4e2759caeb8ce5b7cde7">
+	</div>
+	<div class="grofile-hash-map-ee427cfd50d93698bbd5a2ec405bbb14">
+	</div>
+	<div class="grofile-hash-map-979ab9ec46304595c60f0bbd1b82f985">
+	</div>
+	<div class="grofile-hash-map-c2b7372c23ef46e38f066e578e4117fb">
+	</div>
+	</div>
+<script type="text/javascript">
+/* <![CDATA[ */
+var HighlanderComments = {"loggingInText":"Logging In\u2026","submittingText":"Posting Comment\u2026","postCommentText":"Post Comment","connectingToText":"Connecting to %s","commentingAsText":"%1$s: You are commenting using your %2$s account.","logoutText":"Log Out","loginText":"Log In","connectURL":"https:\/\/yudiagusta.wordpress.com\/public.api\/connect\/?action=request","logoutURL":"https:\/\/yudiagusta.wordpress.com\/wp-login.php?action=logout&_wpnonce=ecaf59f748","homeURL":"https:\/\/yudiagusta.wordpress.com\/","postID":"81","gravDefault":"mystery","enterACommentError":"Please enter a comment","enterEmailError":"Please enter your email address here","invalidEmailError":"Invalid email address","enterAuthorError":"Please enter your name here","gravatarFromEmail":"This picture will show whenever you leave a comment. Click to customize it.","logInToExternalAccount":"Log in to use details from one of these accounts.","change":"Change","changeAccount":"Change Account","comment_registration":"","userIsLoggedIn":"","isJetpack":"","text_direction":"ltr"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Catatan Tentang kNN Algorithm _ Rehat With Yudi Agusta_files/saved_resource(6)"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var actionbardata = {"siteID":"607782","siteName":"Rehat With Yudi Agusta","siteURL":"http:\/\/yudiagusta.wordpress.com","icon":"<img alt='' src='https:\/\/s2.wp.com\/i\/logo\/wpcom-gray-white.png' class='avatar avatar-50' height='50' width='50' \/>","canManageOptions":"","canCustomizeSite":"","isFollowing":"","themeSlug":"pub\/freshy","signupURL":"https:\/\/wordpress.com\/start\/","loginURL":"https:\/\/wordpress.com\/log-in?redirect_to=https%3A%2F%2Fyudiagusta.wordpress.com%2F2008%2F03%2F27%2Fcatatan-tentang-knn-algorithm%2F&signup_flow=account","themeURL":"","xhrURL":"https:\/\/yudiagusta.wordpress.com\/wp-admin\/admin-ajax.php","nonce":"5e8c964a15","isSingular":"1","isFolded":"","isLoggedIn":"","isMobile":"","subscribeNonce":"<input type=\"hidden\" id=\"_wpnonce\" name=\"_wpnonce\" value=\"7bf78f8c58\" \/>","referer":"https:\/\/yudiagusta.wordpress.com\/2008\/03\/27\/catatan-tentang-knn-algorithm\/","canFollow":"1","feedID":"697114","statusMessage":"","customizeLink":"https:\/\/yudiagusta.wordpress.com\/wp-admin\/customize.php?url=https%3A%2F%2Fyudiagusta.wordpress.com%2F2008%2F03%2F27%2Fcatatan-tentang-knn-algorithm%2F","postID":"81","shortlink":"https:\/\/wp.me\/p2y6W-1j","canEditPost":"","editLink":"https:\/\/wordpress.com\/post\/yudiagusta.wordpress.com\/81","statsLink":"https:\/\/wordpress.com\/stats\/post\/81\/yudiagusta.wordpress.com","i18n":{"view":"View site","follow":"Follow","following":"Following","edit":"Edit","login":"Log in","signup":"Sign up","customize":"Customize","report":"Report this content","themeInfo":"Get theme: Freshy","shortlink":"Copy shortlink","copied":"Copied","followedText":"New posts from this site will now appear in your <a href=\"https:\/\/wordpress.com\/\">Reader<\/a>","foldBar":"Collapse this bar","unfoldBar":"Expand this bar","editSubs":"Manage subscriptions","viewReader":"View site in Reader","viewReadPost":"View post in Reader","subscribe":"Sign me up","enterEmail":"Enter your email address","followers":"Join 40 other followers","alreadyUser":"Already have a WordPress.com account? <a href=\"https:\/\/wordpress.com\/log-in?redirect_to=https%3A%2F%2Fyudiagusta.wordpress.com%2F2008%2F03%2F27%2Fcatatan-tentang-knn-algorithm%2F&signup_flow=account\">Log in now.<\/a>","stats":"Stats"}};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Catatan Tentang kNN Algorithm _ Rehat With Yudi Agusta_files/saved_resource(7)"></script><div id="actionbar" class="actnbr-pub-freshy actnbr-has-follow"><ul><li class="actnbr-btn actnbr-hidden"> 			    	<a class="actnbr-action actnbr-actn-follow" href="https://yudiagusta.wordpress.com/2008/03/27/catatan-tentang-knn-algorithm/"><svg class="gridicon gridicon__follow" height="24px" width="24px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M23 16v2h-3v3h-2v-3h-3v-2h3v-3h2v3h3zM20 2v9h-4v3h-3v4H4c-1.1 0-2-.9-2-2V2h18zM8 13v-1H4v1h4zm3-3H4v1h7v-1zm0-2H4v1h7V8zm7-4H4v2h14V4z"></path></g></svg><span>Follow</span></a> 			    	<div class="actnbr-popover tip tip-top-left actnbr-notice"> 			    		<div class="tip-arrow"></div> 			    		<div class="tip-inner actnbr-follow-bubble"></div> 			    	</div> 			    </li><li class="actnbr-ellipsis actnbr-hidden"> 			  <svg class="gridicon gridicon__ellipsis" height="24" width="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><circle cx="5" cy="12" r="2"></circle><circle cx="19" cy="12" r="2"></circle><circle cx="12" cy="12" r="2"></circle></g></svg> 			  <div class="actnbr-popover tip tip-top-left actnbr-more"> 			  	<div class="tip-arrow"></div> 			  	<div class="tip-inner"> 				  <ul> 				    <li class="actnbr-sitename actnbr-hidden"><a href="http://yudiagusta.wordpress.com/"><img alt="" src="./Catatan Tentang kNN Algorithm _ Rehat With Yudi Agusta_files/wpcom-gray-white.png" class="avatar avatar-50" height="50" width="50" scale="0"> Rehat With Yudi Agusta</a></li> 				   	<li class="actnbr-folded-customize actnbr-hidden"><a href="https://yudiagusta.wordpress.com/wp-admin/customize.php?url=https%3A%2F%2Fyudiagusta.wordpress.com%2F2008%2F03%2F27%2Fcatatan-tentang-knn-algorithm%2F"><svg class="gridicon gridicon__customize" height="20px" width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M2 6c0-1.505.78-3.08 2-4 0 .845.69 2 2 2 1.657 0 3 1.343 3 3 0 .386-.08.752-.212 1.09.74.594 1.476 1.19 2.19 1.81L8.9 11.98c-.62-.716-1.214-1.454-1.807-2.192C6.753 9.92 6.387 10 6 10c-2.21 0-4-1.79-4-4zm12.152 6.848l1.34-1.34c.607.304 1.283.492 2.008.492 2.485 0 4.5-2.015 4.5-4.5 0-.725-.188-1.4-.493-2.007L18 9l-2-2 3.507-3.507C18.9 3.188 18.225 3 17.5 3 15.015 3 13 5.015 13 7.5c0 .725.188 1.4.493 2.007L3 20l2 2 6.848-6.848c1.885 1.928 3.874 3.753 5.977 5.45l1.425 1.148 1.5-1.5-1.15-1.425c-1.695-2.103-3.52-4.092-5.448-5.977z" data-reactid=".2.1.1:0.1b.0"></path></g></svg><span>Customize<span></span></span></a></li> 				    <li class="actnbr-folded-follow actnbr-hidden"><a class="actnbr-action actnbr-actn-follow" href="https://yudiagusta.wordpress.com/2008/03/27/catatan-tentang-knn-algorithm/"><svg class="gridicon gridicon__follow" height="24px" width="24px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M23 16v2h-3v3h-2v-3h-3v-2h3v-3h2v3h3zM20 2v9h-4v3h-3v4H4c-1.1 0-2-.9-2-2V2h18zM8 13v-1H4v1h4zm3-3H4v1h7v-1zm0-2H4v1h7V8zm7-4H4v2h14V4z"></path></g></svg><span>Follow</span></a></li> 					<li class="actnbr-signup actnbr-hidden"><a href="https://wordpress.com/start/">Sign up</a></li> 				    <li class="actnbr-login actnbr-hidden"><a href="https://wordpress.com/log-in?redirect_to=https%3A%2F%2Fyudiagusta.wordpress.com%2F2008%2F03%2F27%2Fcatatan-tentang-knn-algorithm%2F&amp;signup_flow=account">Log in</a></li> 				     				    <li class="actnbr-shortlink actnbr-hidden"><a href="https://wp.me/p2y6W-1j">Copy shortlink</a></li> 				    <li class="flb-report actnbr-hidden"><a href="http://en.wordpress.com/abuse/">Report this content</a></li> 				     				     				    <li class="actnbr-subs actnbr-hidden"><a href="https://subscribe.wordpress.com/">Manage subscriptions</a></li> 				    <li class="actnbr-fold actnbr-hidden"><a href="https://yudiagusta.wordpress.com/2008/03/27/catatan-tentang-knn-algorithm/">Collapse this bar</a></li> 			      </ul> 			    </div> 		      </div> 		    </li> 	      </ul></div>
+<script type="text/javascript">
+// <![CDATA[
+(function() {
+try{
+  if ( window.external &&'msIsSiteMode' in window.external) {
+    if (window.external.msIsSiteMode()) {
+      var jl = document.createElement('script');
+      jl.type='text/javascript';
+      jl.async=true;
+      jl.src='/wp-content/plugins/ie-sitemode/custom-jumplist.php';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(jl, s);
+    }
+  }
+}catch(e){}
+})();
+// ]]>
+</script>		<iframe src="./Catatan Tentang kNN Algorithm _ Rehat With Yudi Agusta_files/master.html" scrolling="no" id="likes-master" name="likes-master" style="display:none;"></iframe>
+		<div id="likes-other-gravatars"><div class="likes-text"><span>%d</span> bloggers like this:</div><ul class="wpl-avatars sd-like-gravatars"></ul></div>
+<script src="./Catatan Tentang kNN Algorithm _ Rehat With Yudi Agusta_files/w.js.download" type="text/javascript" async="" defer=""></script>
+<script type="text/javascript">
+_tkq = window._tkq || [];
+_stq = window._stq || [];
+_tkq.push(['storeContext', {'blog_id':'607782','blog_tz':'8','user_lang':'en','blog_lang':'en','user_id':'0'}]);
+_stq.push(['view', {'blog':'607782','v':'wpcom','tz':'8','user_id':'0','post':'81','subd':'yudiagusta'}]);
+_stq.push(['extra', {'crypt':'UE5XaGUuOTlwaD85flAmcm1mcmZsaDhkV11YdWtpP0NsWnVkPS9sL0ViLndld3BjaVhfenxESDRhV3l4V1NJTDJvSElRMSxqXUZfKzdlSDRHNTVqNS5IclF3K2dTLE5fVit3eF9PTmpsTkpYbVsxd1NFdlpNaVtzM0YuU19qZlVNTWxvUFBJTzdQcFsuRElyTj9rREdhJVZ4NzVYXW0tdlZIR05TY1lMNEY3L1ZYclclR0crcmRPflM2JjdBdWhIYmdqUHhsN1ZWemlVZW9KLkhxWkQwWXw3cS9dRSxLczIlNWR6b3xsMEFwR3lbYkR1YmFLdFFmS3NaR3xpJkZrdllLWS16MCtMRkIlRz9XSDBdcDhFfi8ubHlORk49ZWdPdV0='}]);
+_stq.push([ 'clickTrackerInit', '607782', '81' ]);
+	</script>
+<noscript><img src="https://pixel.wp.com/b.gif?v=noscript" style="height:0px;width:0px;overflow:hidden" alt="" /></noscript>
+<script>
+if ( 'object' === typeof wpcom_mobile_user_agent_info ) {
+
+	wpcom_mobile_user_agent_info.init();
+	var mobileStatsQueryString = "";
+	
+	if( false !== wpcom_mobile_user_agent_info.matchedPlatformName )
+		mobileStatsQueryString += "&x_" + 'mobile_platforms' + '=' + wpcom_mobile_user_agent_info.matchedPlatformName;
+	
+	if( false !== wpcom_mobile_user_agent_info.matchedUserAgentName )
+		mobileStatsQueryString += "&x_" + 'mobile_devices' + '=' + wpcom_mobile_user_agent_info.matchedUserAgentName;
+	
+	if( wpcom_mobile_user_agent_info.isIPad() )
+		mobileStatsQueryString += "&x_" + 'ipad_views' + '=' + 'views';
+
+	if( "" != mobileStatsQueryString ) {
+		new Image().src = document.location.protocol + '//pixel.wp.com/g.gif?v=wpcom-no-pv' + mobileStatsQueryString + '&baba=' + Math.random();
+	}
+	
+}
+</script>
+
+<iframe style="display: none" src="./Catatan Tentang kNN Algorithm _ Rehat With Yudi Agusta_files/occ.html"></iframe><iframe style="display: none" src="./Catatan Tentang kNN Algorithm _ Rehat With Yudi Agusta_files/d.html"></iframe><script src="./Catatan Tentang kNN Algorithm _ Rehat With Yudi Agusta_files/725X1342.skimlinks.js.download"></script><img src="./Catatan Tentang kNN Algorithm _ Rehat With Yudi Agusta_files/g.gif" alt=":)" id="wpstats" scale="0"></body><iframe sandbox="allow-scripts allow-same-origin" id="287becd1cc4613a" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" style="height:0px;width:0px;display:none;" scrolling="no" src="./Catatan Tentang kNN Algorithm _ Rehat With Yudi Agusta_files/async_usersync.html">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="2960b505997f80e" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" style="height:0px;width:0px;display:none;" scrolling="no" src="./Catatan Tentang kNN Algorithm _ Rehat With Yudi Agusta_files/usync.html">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="305c21488ef122d" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" style="height:0px;width:0px;display:none;" scrolling="no" src="./Catatan Tentang kNN Algorithm _ Rehat With Yudi Agusta_files/iframe.html">
+    </iframe><iframe sandbox="allow-scripts allow-same-origin" id="31cae939ecfad54" frameborder="0" allowtransparency="true" marginheight="0" marginwidth="0" width="0" hspace="0" vspace="0" height="0" style="height:0px;width:0px;display:none;" scrolling="no" src="./Catatan Tentang kNN Algorithm _ Rehat With Yudi Agusta_files/checksync.html">
+    </iframe></html>
