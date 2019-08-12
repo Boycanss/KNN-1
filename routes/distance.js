@@ -18,7 +18,14 @@ const arraySort = require('array-sort');
 //___________________________________________________
 //CALL CLASSES
 const sortclass = require("./sortDistance");
+const sort = sortclass.Sort;
+
 const tetangga = require("./neighbor");
+const nb = tetangga.Nb;
+
+const result = require("./main");
+const klas = result.Results;
+
 //___________________________________________________
 // const Class = new Kelas.Class;
 
@@ -29,8 +36,9 @@ const Distance = function(latih, uji){
 
 Distance.prototype.jarak = function(){
 	const dist = [];
-	const datauji = [];
-	datauji.push(this.uji);
+	const datauji = this.uji; 
+	// [];
+	// datauji.push(this.uji);
 	// console.log(datauji[0].kelas);
 	console.log("______________________________________");
 	console.log(this.latih.length);
@@ -45,16 +53,16 @@ Distance.prototype.jarak = function(){
 			dist.push(Math.sqrt(distance));
 		}
 	}
-	const sort = sortclass.Sort;
+	
 	const asort = new sort(dist, this.latih);
 	const urutan = asort.Sorting();
 	console.log(urutan);
-	// return urutan;
-	const nb = tetangga.Nb;
+	
 	const neighbor = new nb(urutan, urutan.length);
-	const getNb = neighbor.getNeighbor();
+	const getK = neighbor.getNeighbor();
 
-	return getNb;
+	const getKlas = new klas(urutan, (getK-1));
+	console.log(getKlas.getRespon());
 };
 
 

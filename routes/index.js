@@ -42,14 +42,7 @@ const eujarak = coba.Distance;
 router.get('/ggwp',(req,res)=>{
 	connection.query('SELECT * FROM coldata', (err,rows)=>{
 		const latih = rows;
-		const uji = rows[2];
-		// for (var i = 0; i <= 4; i++) {
-		// 	const ujidata = rows[i];
-		// 	// console.log(ujidata);
-		// 	uji.push(ujidata);
-		// }
-		// console.log(uji);
-		// console.log(latih);
+		const uji = rows[17];
 		const dist = new eujarak(latih, uji);
 		dist.jarak();
 	})
@@ -70,6 +63,27 @@ router.get('/', (req,res)=>{
 				res.render('index.ejs', {data:rows}
 				)}
 		})
+})
+
+router.post('/ggplayer', (req,res)=>{
+	connection.query('SELECT * FROM coldata', (err,rows)=>{
+	const latih = rows;
+	var form = new formidable.IncomingForm();
+	form.parse(req, function(err, fields, files){
+	var ability1 = fields.Entry1;
+	var ability2 = fields.Entry2;
+	var ability3 = fields.Entry3;
+	var ability4 = fields.Entry4;
+	var ability5 = fields.Entry5;
+	var ability6 = fields.Entry6;
+	// console.log(ability1,ability2,ability3,ability4,ability5,ability6);
+	const uji = [];
+	uji.push({ability1: ability1, ability2:ability2, ability3:ability3, ability4:ability4, ability5:ability5, ability6:ability6});
+	console.log(uji);
+	const dist = new eujarak(latih, uji);
+	dist.jarak();
+})
+	})		
 })
 
 router.post('/submitplayer', (req,res)=>{

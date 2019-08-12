@@ -29,7 +29,7 @@ Nb.prototype.getNeighbor = function(){
     const res = [];
     const getResp = Resp.Resp;
     const getAccu = Accu.Accuracy;
-    const gg = this.distance.length;   
+    const gg = [];   
     
 
     for (let i = 0; i< this.distance.length; i++) {
@@ -40,12 +40,23 @@ Nb.prototype.getNeighbor = function(){
             const prediction = resp.getRespon();
             const akurasi = new getAccu(spliced,prediction); 
             const resultAkurasi = akurasi.getAccuracy();
-            res.push(resultAkurasi);
+            res.push({k: (i+1), akurasi: resultAkurasi});
         }
         
     }
     console.log(res);
-    
+    const hundred = res.splice(1,res.length);
+    const maxacc = Math.max.apply(Math, hundred.map(function(maxof) { 
+        return maxof.akurasi;
+    }));
+    console.log(maxacc);
+
+    for (let i = 0; i<= hundred.length; i++) {
+        if (hundred[i].akurasi === maxacc) {
+            console.log(hundred[i].k);
+            return hundred[i].k;
+        }
+    }
 }
 
 module.exports = {

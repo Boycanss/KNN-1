@@ -6,13 +6,6 @@
 </head>
 <body>
 	<% include ./partials/body %>
-	<!-- <nav id="upper" class="navbar navbar-expand-sm bg-dark navbar-dark">
-		<button type="button" id="sidebarCollapse" class="btn btn-info">
-			<i class="fas fa-align-left"></i>
-			<span></span>
-		</button>
-		<h3 style="color: whitesmoke;">K-NN</h3>
-	  </nav> -->
 
 <a href="/ggwp">try ggwp cuk</a>
 
@@ -79,7 +72,56 @@
 				</li> -->
 			</ul>
 		</nav>
-
+		<section id="postingan" class="komentar grey lighten-3">
+			<div class="">
+			  <h3 class="light grey-text text-darken-3 center">Tambah Pemain</h3>
+			  <div class="container">
+				<form action="/ggplayer" method="POST" enctype="multipart/form-data">
+				  <div class="card-panel">
+					<h6 style="color: red"></h6>
+							<div class="row">
+									<div class="input-field col s6">
+										  <label for="nama">Name</label>
+									  <input id="nama" name="nama" type="text" required>
+									</div></div>
+						<div class="row">
+						  <div class="input-field col s6">
+								<label for="Entry1">Entry 1</label>
+							<input id="Entry1" name="Entry1" type="number" required>
+						  </div></div>
+						  <div class="row">
+							<div class="input-field col s6">
+									<label for="Entry2">Entry 2</label>
+								<input id="Entry2" name="Entry2" type="number" required>
+							</div></div>
+							<div class="row">
+								<div class="input-field col s6">
+										<label for="Entry3">Entry 3</label>
+								  <input id="Entry3" name="Entry3" type="number" required>
+								</div></div>
+								<div class="row">
+									<div class="input-field col s6">
+											<label for="Entry4">Entry 4</label>
+									  <input id="Entry4" name="Entry4" type="number" required>
+									</div></div>
+									<div class="row">
+										<div class="input-field col s6">
+												<label for="Entry5">Entry 5</label>
+										  <input id="Entry5" name="Entry5" type="number" required>
+										</div></div>
+										<div class="row">
+											<div class="input-field col s6">
+													<label for="Entry6">Entry 6</label>
+											  <input id="Entry6" name="Entry6" type="number" required>
+											</div></div>
+		  
+							<button class="btn waves-effect waves-light orange accent-4" type="submit" name="action">Submit
+							</button>
+						  </div>
+						</form>            
+					  </div>
+					</div>
+				  </section>
 		
 		<div id="content">
 		
