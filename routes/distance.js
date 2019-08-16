@@ -37,16 +37,13 @@ const Distance = function(latih, uji){
 Distance.prototype.jarak = function(){
 	const dist = [];
 	const datauji = this.uji; 
-	// [];
-	// datauji.push(this.uji);
-	// console.log(datauji[0].kelas);
-	console.log("______________________________________");
+	
 	console.log(this.latih.length);
 	console.log(datauji.length);	
 	for (var b = 0; b < this.latih.length; b++) {
 		for (var o = 0; o < datauji.length; o++) {
 			var distance = 0;
-			for (var y = 1; y <= 6; y++) {
+			for (var y = 1; y <= 9; y++) {
 				distance += (datauji[o][`ability${y}`]-this.latih[b][`ability${y}`])**2;
 				// console.log(">>> : ("+datauji[o][`ability${y}`]+"-"+this.latih[b][`ability${y}`]+")**2 = "+(datauji[o][`ability${y}`]-this.latih[b][`ability${y}`])**2);
 			}
@@ -62,7 +59,8 @@ Distance.prototype.jarak = function(){
 	const getK = neighbor.getNeighbor();
 
 	const getKlas = new klas(urutan, (getK-1));
-	console.log(getKlas.getRespon());
+	// console.log(getKlas.getRespon());
+	return getKlas.getRespon();
 };
 
 

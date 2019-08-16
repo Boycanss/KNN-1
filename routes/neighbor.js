@@ -29,9 +29,7 @@ Nb.prototype.getNeighbor = function(){
     const res = [];
     const getResp = Resp.Resp;
     const getAccu = Accu.Accuracy;
-    const gg = [];   
     
-
     for (let i = 0; i< this.distance.length; i++) {
         spliced.push(this.distance[i].posisi);
         if (spliced.length%2 === 1) {

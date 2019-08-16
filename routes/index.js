@@ -17,13 +17,9 @@ const notifier = require('node-notifier');
 var arraySort = require('array-sort');
 //_________________________________________
 var KNNfunction = require('./func');
-
-// EXAMPLE OF OOP IN JS
 const coba = require('./distance');
 
-
-
-
+//DB
 var connection = mysql.createConnection({
 	host     : 'localhost',
 	user     : 'root',
@@ -38,6 +34,7 @@ connection.connect(function(err){
 	}
 });
 
+//router
 const eujarak = coba.Distance;
 router.get('/ggwp',(req,res)=>{
 	connection.query('SELECT * FROM coldata', (err,rows)=>{
@@ -76,37 +73,18 @@ router.post('/ggplayer', (req,res)=>{
 	var ability4 = fields.Entry4;
 	var ability5 = fields.Entry5;
 	var ability6 = fields.Entry6;
+	var ability7 = fields.Entry7;
+	var ability8 = fields.Entry8;
+	var ability9 = fields.Entry9;
 	// console.log(ability1,ability2,ability3,ability4,ability5,ability6);
 	const uji = [];
-	uji.push({ability1: ability1, ability2:ability2, ability3:ability3, ability4:ability4, ability5:ability5, ability6:ability6});
+	uji.push({ability1: ability1, ability2:ability2, ability3:ability3, ability4:ability4, ability5:ability5, ability6:ability6, ability7:ability7, ability8:ability8, ability9:ability9});
 	console.log(uji);
 	const dist = new eujarak(latih, uji);
 	dist.jarak();
 })
 	})		
 })
-
-router.post('/submitplayer', (req,res)=>{
-	var name = req.body.name;
-	var ballskill = req.body.ballskill;
-	var mental = req.body.mental;
-	var passing = req.body.passing;
-	var physical = req.body.physical;
-	var shooting = req.body.shooting;
-	var defence= req.body.defence;
-	var kelas= req.body.kelas;
-	console.log("SUBMITTING PLAYER : "+ name,ballskill,mental,passing,physical,shooting,defence,kelas);
-	connection.query("INSERT INTO coldata (name, ballskill, mental, passing, physical, shooting, defence, kelas) VALUES ('"+name+"',"+ballskill+","+mental+","+passing+","+physical+","+shooting+","+defence+",'"+kelas+"')", (err,rows)=>{
-		if (err) {res.send(err)} else {
-			console.log("PLAYER SUBMITTED");
-			res.redirect('/')
-		}
-		
-	})
-})
-
-
-
 
 router.post('/coba', (req,res)=>{
 	var qq= req.body.class;

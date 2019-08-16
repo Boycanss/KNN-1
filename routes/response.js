@@ -29,24 +29,24 @@ Resp.prototype.getRespon = function(){
 		for (let i = 0; i < this.position.length; i++) {
 			var resp = this.position[i];
 			// console.log(resp);
-			if (resp == "PENYERANG") {
+			if (resp == "STRIKER") {
 				posisi[0] += 1;
-			} else if (resp == "PEMAIN TENGAH") {
+			} else if (resp == "GELANDANG") {
 				posisi[1] +=1;
 			}else{
 				posisi[2] +=1;
 			}
 		}
-		console.log("PENYERANG :"+posisi[0]);
-		console.log("PEMAIN TENGAH :"+posisi[1]);
+		console.log("STRIKER :"+posisi[0]);
+		console.log("GELANDANG :"+posisi[1]);
 		console.log("BEK :"+posisi[2]);
 		console.log("HASIL : ");
 		if (posisi[0] > posisi[1] && posisi[0] > posisi[2]) {
             // console.log("PENYERANG");
-			return "PENYERANG"; 
+			return "STRIKER"; 
 		} else if (posisi[1] > posisi[0] && posisi[1] > posisi[2]) {
             // console.log("PEMAIN TENGAH");
-			return "PEMAIN TENGAH";
+			return "GELANDANG";
 		} else {
             // console.log("BEK");
 			return "BEK";
